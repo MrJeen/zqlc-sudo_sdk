@@ -2,7 +2,7 @@
   "name": "@zqlc/sudo_sdk",
   "version": "1.0.0",
   "description": "",
-  "main": ".eslintrc.js",
+  "main": "./index.js",
   "scripts": {
     "build": "tsc --build tsconfig.build.json"
   },
@@ -36,5 +36,9 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "package.json",
+    "lib"
+  ]
 }
