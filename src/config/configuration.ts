@@ -73,7 +73,7 @@ export default () => ({
     schema: process.env.POSTGRES_SCHEMA || 'test',
     autoLoadEntities: true,
     synchronize: true,
-    logging: true,
+    // logging: true,
   },
 
   database_openmeta: {
