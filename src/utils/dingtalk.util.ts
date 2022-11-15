@@ -3,11 +3,10 @@ import axios from 'axios';
 import configuration from '../config/base.config';
 import _ from 'lodash';
 
-const config = configuration();
-
 export async function sendMessage(msg: string) {
-  const secret = _.get(config, 'secret');
-  const webhook = _.get(config, 'webhook');
+  const config = configuration();
+  const secret = _.get(config, 'dingtalk.secret');
+  const webhook = _.get(config, 'dingtalk.webhook');
   const timestamp = new Date().getTime();
   const sign = buildSign(timestamp, secret);
   const url = webhook + '&' + 'timestamp=' + timestamp + '&' + 'sign=' + sign;
@@ -19,17 +18,13 @@ export async function sendMessage(msg: string) {
     },
   };
 
-  return axios
-    .post(url, content)
-    .then((res) => {
-      if (res.data.errcode) {
-        throw Error(res.data.errmsg);
-      }
-      return res.data;
-    })
-    .catch((e) => {
-      throw e;
+  try {
+    return await axios({
+      url,
+      method: 'post',
+      data: content,
     });
+  } catch (e) {}
 }
 
 function buildSign(timestamp: number, secret: string) {

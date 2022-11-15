@@ -17,9 +17,6 @@ export class ContextTrace {
   ) {}
 }
 
-// 配置
-const config = configuration();
-
 // 添加自定义布局，需要在 log4js.configure() 之前调用
 Log4js.addLayout('Awesome-nest', (logConfig: any) => {
   return (logEvent: Log4js.LoggingEvent): string => {
@@ -85,63 +82,64 @@ Log4js.addLayout('Awesome-nest', (logConfig: any) => {
   };
 });
 
-// 注入配置
+// 注入配置(这时候还加载不了.env配置，注意不要引用.env里的参数)
+const config = configuration();
 Log4js.configure(_.get(config, 'logger'));
 const logger = Log4js.getLogger();
 const errorLogger = Log4js.getLogger('error');
-// 设置level (生产环境仅打印部分日志即可，默认等级在config中已配置)
-const level = _.get(config, 'logger_level');
-if (level) {
-  logger.level = level;
-}
-
-// 日志追踪，可以追溯到哪个文件、第几行第几列
-function getStackTrace(deep = 2): string {
-  const stackList: StackTrace.StackFrame[] = StackTrace.getSync();
-  const stackInfo: StackTrace.StackFrame = stackList[deep];
-
-  const lineNumber: number = stackInfo.lineNumber;
-  const columnNumber: number = stackInfo.columnNumber;
-  const fileName: string = stackInfo.fileName;
-  const basename: string = Path.basename(fileName);
-  const functionName: string = stackInfo.functionName;
-  const appName = _.get(config, 'app_name');
-  const env = _.get(config, 'app_env');
-  return `${appName}:${env}:${basename}:${functionName}(line: ${lineNumber}, column: ${columnNumber}):`;
-}
-
-function notice(msg) {
-  sendMessage(msg).catch();
-}
 
 export class Logger {
+  // 日志追踪，可以追溯到哪个文件、第几行第几列
+  static getStackTrace(deep = 2): string {
+    // 重新获取一次配置
+    const stackList: StackTrace.StackFrame[] = StackTrace.getSync();
+    const stackInfo: StackTrace.StackFrame = stackList[deep];
+
+    const lineNumber: number = stackInfo.lineNumber;
+    const columnNumber: number = stackInfo.columnNumber;
+    const fileName: string = stackInfo.fileName;
+    const basename: string = Path.basename(fileName);
+    const functionName: string = stackInfo.functionName;
+    const appName = process.env.APP_NAME;
+    const env = process.env.APP_ENV;
+    return `${appName}:${env}:${basename}:${functionName}(line: ${lineNumber}, column: ${columnNumber}):`;
+  }
+
+  static checkLevel() {
+    const level = process.env.LOGGER_LEVEL;
+    if (level) {
+      logger.level = level;
+    }
+    return logger;
+  }
+
   static log(...args) {
-    logger.log(getStackTrace(), JSON.stringify(args));
+    this.checkLevel().log(this.getStackTrace(), JSON.stringify(args));
   }
 
   static debug(...args) {
-    logger.debug(getStackTrace(), JSON.stringify(args));
+    this.checkLevel().debug(this.getStackTrace(), JSON.stringify(args));
   }
 
   static info(...args) {
-    logger.info(getStackTrace(), JSON.stringify(args));
+    this.checkLevel().info(this.getStackTrace(), JSON.stringify(args));
   }
 
   static warn(...args) {
-    logger.warn(getStackTrace(), JSON.stringify(args));
+    this.checkLevel().warn(this.getStackTrace(), JSON.stringify(args));
   }
 
   static error(...args) {
     const msg = JSON.stringify(args);
-    const trace = getStackTrace();
+    const trace = this.getStackTrace();
     errorLogger.error(trace, msg);
-    notice(trace + msg);
+    sendMessage(trace + msg);
   }
 
   static fatal(...args) {
     const msg = JSON.stringify(args);
-    const trace = getStackTrace();
+    const trace = this.getStackTrace();
     errorLogger.fatal(trace, msg);
-    notice(trace + msg);
+    sendMessage(trace + msg);
   }
 }
