@@ -150,8 +150,7 @@ export class LoggerService {
 
   notice(msg) {
     sendMessage(msg).catch((error) => {
-      // 此时不可调用error方法，会进入死循环
-      this.warn(error);
+      // 无需记录
     });
   }
 }
