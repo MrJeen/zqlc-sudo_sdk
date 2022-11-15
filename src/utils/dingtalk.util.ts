@@ -1,6 +1,6 @@
 import { createHmac } from 'crypto';
 import axios from 'axios';
-import configuration from '../config/configuration';
+import configuration from '../config/base.config';
 import _ from 'lodash';
 
 const config = configuration();

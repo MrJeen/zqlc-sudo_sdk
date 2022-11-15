@@ -1,4 +1,4 @@
-import configuration from '../config/configuration';
+import configuration from '../config/base.config';
 import Log4js from 'log4js';
 import Util from 'util';
 import Moment from 'moment';
@@ -111,9 +111,7 @@ function getStackTrace(deep = 2): string {
 }
 
 function notice(msg) {
-  sendMessage(msg).catch((error) => {
-    // 无需记录
-  });
+  sendMessage(msg).catch();
 }
 
 export class Logger {
