@@ -1,9 +1,13 @@
 import { createHmac } from 'crypto';
 import axios from 'axios';
+import configuration from '../config/configuration';
+import _ from 'lodash';
+
+const config = configuration();
 
 export async function sendMessage(msg: string) {
-  const secret = process.env.DINGDING_ROBOT_SECRET;
-  const webhook = process.env.DINGDING_ROBOT_WEBHOOK;
+  const secret = _.get(config, 'secret');
+  const webhook = _.get(config, 'webhook');
   const timestamp = new Date().getTime();
   const sign = buildSign(timestamp, secret);
   const url = webhook + '&' + 'timestamp=' + timestamp + '&' + 'sign=' + sign;

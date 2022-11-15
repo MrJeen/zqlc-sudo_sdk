@@ -66,14 +66,13 @@ export default () => ({
     // 用local time
     useUTC: false,
     host: process.env.POSTGRES_HOST || 'localhost',
-    port: parseInt(process.env.POSTGRES_PORT, 10) || 5432,
+    port: ~~process.env.POSTGRES_PORT || 5432,
     username: process.env.POSTGRES_USERNAME || 'root',
     password: process.env.POSTGRES_PASSWORD || 'root',
     database: process.env.POSTGRES_DATABASE || 'test',
     schema: process.env.POSTGRES_SCHEMA || 'test',
     autoLoadEntities: true,
     synchronize: true,
-    // logging: true,
   },
 
   database_openmeta: {
@@ -81,11 +80,17 @@ export default () => ({
     // 用local time
     useUTC: false,
     host: process.env.POSTGRES_OPENMETA_HOST || 'localhost',
-    port: parseInt(process.env.POSTGRES_OPENMETA_PORT, 10) || 5432,
+    port: ~~process.env.POSTGRES_OPENMETA_PORT || 5432,
     username: process.env.POSTGRES_OPENMETA_USERNAME || 'root',
     password: process.env.POSTGRES_OPENMETA_PASSWORD || 'root',
     database: process.env.POSTGRES_OPENMETA_DATABASE || 'test',
     schema: process.env.POSTGRES_OPENMETA_SCHEMA || 'test',
     autoLoadEntities: true,
+  },
+
+  /******************************** 钉钉配置 ***********************************/
+  dingtalk: {
+    webhook: process.env.DINGDING_ROBOT_WEBHOOK,
+    secret: process.env.DINGDING_ROBOT_SECRET,
   },
 });
