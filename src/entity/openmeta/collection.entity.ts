@@ -3,7 +3,7 @@ import { NftEntity } from './nft.entity';
 import { Column, Entity, JoinColumn, OneToMany } from 'typeorm';
 import { BaseEntity } from '../base.entity';
 
-@Entity('collections')
+@Entity('collections', { name: 'openmeta' })
 export class CollectionEntity extends BaseEntity {
   @Column()
   name: string;

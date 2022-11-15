@@ -3,7 +3,7 @@ import { CollectionEntity } from './collection.entity';
 import { NftEntity } from './nft.entity';
 import { BaseEntity } from '../base.entity';
 
-@Entity('nft_owners')
+@Entity('nft_owners', { name: 'openmeta' })
 export class NftOwnerEntity extends BaseEntity {
   @Column()
   chain_id: number;
