@@ -45,6 +45,9 @@ export enum ORDER_DIRECTION {
   ASC = 'ASC',
 }
 
+// openmeta数据库
+export const DATABASE_OPENMETA_NAME = 'openmeta';
+
 export class BaseEntity {
   @PrimaryGeneratedColumn({ comment: 'ID' })
   id: number;

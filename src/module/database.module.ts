@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-import { DATABASE_OPENMETA_NAME } from '../config/constant';
+import { DATABASE_OPENMETA_NAME } from '../entity/base.entity';
 
 @Module({
   imports: [
