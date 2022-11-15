@@ -39,8 +39,6 @@
   },
   "files": [
     "package.json",
-    "tsconfig.build.json",
-    "tsconfig.json",
     "lib"
   ]
 }
