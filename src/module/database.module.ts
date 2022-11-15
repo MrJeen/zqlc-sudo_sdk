@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
+import { DATABASE_OPENMETA_NAME } from '../config/constant';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { ConfigService } from '@nestjs/config';
 
     // openmeta
     TypeOrmModule.forRootAsync({
-      name: 'openmeta',
+      name: DATABASE_OPENMETA_NAME,
       useFactory: (configService: ConfigService) =>
         configService.get('database_openmeta'),
       inject: [ConfigService],
