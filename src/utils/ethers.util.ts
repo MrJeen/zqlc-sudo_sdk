@@ -7,27 +7,27 @@ import { CHAIN } from '../entity/base.entity';
  * 获取节点
  * @param chainId
  */
-export const getNode = (chainId: number): string => {
+export function getNode(chainId: number): string {
   // eg: EHT_NODE
   return process.env[CHAIN[chainId] + '_NODE'];
-};
+}
 
 /**
  * 获取provider
  * @param chainId
  */
-export const getJsonRpcProvider = (chainId: number): JsonRpcProvider => {
+export function getJsonRpcProvider(chainId: number): JsonRpcProvider {
   const node = getNode(chainId);
   return new ethers.providers.JsonRpcProvider(node);
-};
+}
 
 /**
  * 获取Interface实例
  * @param abi
  */
-export const getInterface = (abi: any): Interface => {
+export function getInterface(abi: any): Interface {
   return new ethers.utils.Interface(abi);
-};
+}
 
 /**
  * 获取合约实例
@@ -35,10 +35,10 @@ export const getInterface = (abi: any): Interface => {
  * @param abi
  * @param provider
  */
-export const getContract = (
+export function getContract(
   address: string,
   abi: any,
   provider: JsonRpcProvider,
-) => {
+) {
   return new ethers.Contract(address, abi, provider);
-};
+}

@@ -12,3 +12,11 @@ export function isDirectInstance(instance: string): boolean {
   }
   return process.env.NODE_APP_INSTANCE === instance;
 }
+
+/**
+ * 等待函数
+ * @param milliseconds 毫秒
+ */
+export function sleep(milliseconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}

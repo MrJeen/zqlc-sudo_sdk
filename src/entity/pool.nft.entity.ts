@@ -1,9 +1,10 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, Index } from 'typeorm';
 
 @Entity('pool_nfts')
+@Index(['pool_id'], { unique: true })
 export class PoolNftEntity extends BaseEntity {
-  @Column('numeric', { default: '', comment: '池子ID' })
+  @Column('bigint', { default: 0, comment: '池子ID' })
   pool_id;
 
   @Column('jsonb', { default: [], comment: 'nft明细' })

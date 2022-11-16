@@ -1,8 +1,9 @@
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, OneToOne } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { PoolNftEntity } from './pool.nft.entity';
 
 @Entity('pools')
+@Index(['chain_id', 'pool_address'], { unique: true })
 export class PoolEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
@@ -29,38 +30,47 @@ export class PoolEntity extends BaseEntity {
   type;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '增量',
   })
   curve_increment;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '手续费',
   })
   fee;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '初始价格',
   })
   initial_price;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '池子里eth数量',
   })
   balance;
 
+  @Column('int', { default: 0, comment: '池子创建时的区块' })
+  create_block_number;
+
+  @Column('varchar', { default: '', comment: '创建人地址' })
+  creator_address;
+
+  @Column('varchar', { default: '', comment: '创建哈希' })
+  create_transaction_hash;
+
   @OneToOne(() => PoolNftEntity)
-  @JoinColumn({ referencedColumnName: 'pool_id' })
+  @JoinColumn({ name: 'id', referencedColumnName: 'pool_id' })
   nft: PoolNftEntity;
 }

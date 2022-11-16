@@ -1,8 +1,9 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, Index } from 'typeorm';
 
 @Entity('chains')
-export class PoolNftEntity extends BaseEntity {
+@Index(['chain_id'], { unique: true })
+export class ChainEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
 

@@ -32,80 +32,88 @@ export class ContractEntity extends BaseEntity {
   pool_statistics;
 
   @Column('decimal', {
-    precision: 10,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '地板价',
   })
   floor_price;
 
   @Column('decimal', {
-    precision: 10,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '最高报价',
   })
   top_price;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '报价TVL（所有买盘流动性，即价值总和）',
   })
   quote_tvl;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
+    default: 0,
+    comment: '总成交额',
+  })
+  total_amount;
+
+  @Column('decimal', {
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '24小时成交额',
   })
   daily_amount;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '7天成交额',
   })
   weekly_amount;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '30天成交额',
   })
   monthly_amount;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '24小时涨跌幅',
   })
   daily_range;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '7天涨跌幅',
   })
   weekly_range;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '30天涨跌幅',
   })
   monthly_range;
 
   @Column('decimal', {
-    precision: 20,
-    scale: 4,
+    precision: 36,
+    scale: 20,
     default: 0,
     comment: '涨跌幅基准（0点数据）',
   })
