@@ -5,31 +5,31 @@ import { BaseEntity, CONTRACT_STATUS } from './base.entity';
 @Index(['chain_id', 'token_address'], { unique: true })
 export class ContractEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
-  chain_id: number;
+  chain_id;
 
   @Column('varchar', { default: '', comment: '系列地址' })
-  token_address: string;
+  token_address;
 
   @Column('varchar', { default: '', comment: '系列名称' })
-  name: string;
+  name;
 
   @Column('varchar', { default: '', comment: '系列类型（ERC721、ERC1155）' })
-  contract_type: string;
+  contract_type;
 
   @Column('varchar', { default: '', comment: '系列创建者' })
-  creator: string;
+  creator;
 
   @Column('int', { default: 0, comment: '持有人数' })
-  owner_statistics: number;
+  owner_statistics;
 
   @Column('int', { default: 0, comment: 'nft个数' })
-  nft_statistics: number;
+  nft_statistics;
 
   @Column('int', { default: 0, comment: '列出数量（卖池中的NFT数量）' })
-  list_volume: number;
+  list_volume;
 
   @Column('int', { default: 0, comment: '池子数量（所有流动池数量）' })
-  pool_statistics: number;
+  pool_statistics;
 
   @Column('decimal', {
     precision: 10,
@@ -37,7 +37,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '地板价',
   })
-  floor_price: number;
+  floor_price;
 
   @Column('decimal', {
     precision: 10,
@@ -45,7 +45,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '最高报价',
   })
-  top_price: number;
+  top_price;
 
   @Column('decimal', {
     precision: 20,
@@ -53,7 +53,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '报价TVL（所有买盘流动性，即价值总和）',
   })
-  quote_tvl: number;
+  quote_tvl;
 
   @Column('decimal', {
     precision: 20,
@@ -61,7 +61,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '24小时成交额',
   })
-  daily_amount: number;
+  daily_amount;
 
   @Column('decimal', {
     precision: 20,
@@ -69,7 +69,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '7天成交额',
   })
-  weekly_amount: number;
+  weekly_amount;
 
   @Column('decimal', {
     precision: 20,
@@ -77,7 +77,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '30天成交额',
   })
-  monthly_amount: number;
+  monthly_amount;
 
   @Column('decimal', {
     precision: 20,
@@ -85,7 +85,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '24小时涨跌幅',
   })
-  daily_range: number;
+  daily_range;
 
   @Column('decimal', {
     precision: 20,
@@ -93,7 +93,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '7天涨跌幅',
   })
-  weekly_range: number;
+  weekly_range;
 
   @Column('decimal', {
     precision: 20,
@@ -101,7 +101,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '30天涨跌幅',
   })
-  monthly_range: number;
+  monthly_range;
 
   @Column('decimal', {
     precision: 20,
@@ -109,17 +109,17 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '涨跌幅基准（0点数据）',
   })
-  basic_range: number;
+  basic_range;
 
   @Column('int', { default: 0, comment: '是否认证（是:1 否:0）' })
-  is_verified: number;
+  is_verified;
 
   @Column('int', {
     default: CONTRACT_STATUS.UPPER,
     comment: '状态（已上架:20 已下架:30 已隐藏:90）',
   })
-  status: number;
+  status;
 
   @Column('int', { default: 0, comment: '是否首页展示（是:1 否:0）' })
-  show_on_home_page: number;
+  show_on_home_page;
 }

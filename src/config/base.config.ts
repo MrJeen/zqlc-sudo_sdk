@@ -93,4 +93,13 @@ export default () => ({
     webhook: process.env.DINGDING_ROBOT_WEBHOOK,
     secret: process.env.DINGDING_ROBOT_SECRET,
   },
+
+  /******************************** redis配置 ***********************************/
+  redis: {
+    host: process.env.REDIS_HOST || 'localhost',
+    port: ~~process.env.REDIS_PORT || 6379,
+    db: ~~process.env.REDIS_DB || 9,
+    password: process.env.REDIS_PASSWORD || '',
+    keyPrefix: `${process.env.APP_NAME}:${process.env.APP_ENV}:` || 'redis',
+  },
 });
