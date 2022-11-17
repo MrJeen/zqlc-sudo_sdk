@@ -6,40 +6,40 @@ import { BaseEntity } from '../base.entity';
 @Entity('collections')
 export class CollectionEntity extends BaseEntity {
   @Column()
-  name;
+  name: number;
 
   @Column()
-  description;
+  description: string;
 
   @Column()
-  category_id;
+  category_id: number;
 
   @Column()
-  contract_address;
+  contract_address: string;
 
   @Column()
-  chain_id;
+  chain_id: number;
 
   @Column()
-  logo_url;
+  logo_url: string;
 
   @Column()
-  featured_url;
+  featured_url: string;
 
   @Column()
-  background_url;
+  background_url: string;
 
   @Column()
-  social_links;
+  social_links: string;
 
   @Column()
-  currency;
+  currency: string;
 
   @Column()
-  is_certified;
+  is_certified: boolean;
 
   @Column()
-  token_protocol;
+  token_protocol: string;
 
   @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.collection)
   @JoinColumn({ referencedColumnName: 'collection_id' })

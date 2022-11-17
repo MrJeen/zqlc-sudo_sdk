@@ -50,14 +50,14 @@ export const DATABASE_OPENMETA_NAME = 'openmeta';
 
 export class BaseEntity {
   @PrimaryGeneratedColumn({ comment: 'ID' })
-  id;
+  id: number;
 
   @CreateDateColumn({ comment: '创建时间' })
-  created_at;
+  created_at: Date;
 
   @UpdateDateColumn({ comment: '更新时间' })
-  updated_at;
+  updated_at: Date;
 
   @DeleteDateColumn({ comment: '删除时间' })
-  deleted_at;
+  deleted_at: Date;
 }

@@ -6,19 +6,19 @@ import { BaseEntity } from '../base.entity';
 @Entity('nft_owners')
 export class NftOwnerEntity extends BaseEntity {
   @Column()
-  chain_id;
+  chain_id: number;
 
   @Column()
-  wallet_address;
+  wallet_address: string;
 
   @Column()
-  contract_address;
+  contract_address: string;
 
   @Column()
-  collection_id;
+  collection_id: number;
 
   @Column()
-  token_id;
+  token_id: string;
 
   @ManyToOne(() => CollectionEntity)
   @JoinColumn({ name: 'collection_id' })
