@@ -1,4 +1,4 @@
-import { Column, Entity, Index, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, Index, OneToOne } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { PoolNftEntity } from './pool.nft.entity';
 
@@ -70,7 +70,6 @@ export class PoolEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '创建哈希' })
   create_transaction_hash;
 
-  @OneToOne(() => PoolNftEntity)
-  @JoinColumn({ name: 'id', referencedColumnName: 'pool_id' })
+  @OneToOne(() => PoolNftEntity, (nft: PoolNftEntity) => nft.pool)
   nft: PoolNftEntity;
 }

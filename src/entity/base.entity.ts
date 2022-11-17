@@ -45,6 +45,19 @@ export enum ORDER_DIRECTION {
   ASC = 'ASC',
 }
 
+// 池子类型
+export enum POOL_TYPE {
+  BUY,
+  SELL,
+  DOUBLE,
+}
+
+// 订单类型
+export enum ORDER_TYPE {
+  BUY = 1,
+  SELL,
+}
+
 // openmeta数据库
 export const DATABASE_OPENMETA_NAME = 'openmeta';
 

@@ -1,5 +1,6 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, OneToOne } from 'typeorm';
+import { PoolEntity } from './pool.entity';
 
 @Entity('pool_nfts')
 @Index(['pool_id'], { unique: true })
@@ -9,4 +10,8 @@ export class PoolNftEntity extends BaseEntity {
 
   @Column('jsonb', { default: [], comment: 'nft明细' })
   nft_list;
+
+  @OneToOne(() => PoolEntity)
+  @JoinColumn({ name: 'pool_id' })
+  pool: PoolEntity;
 }
