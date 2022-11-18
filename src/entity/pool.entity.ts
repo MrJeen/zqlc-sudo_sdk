@@ -18,7 +18,7 @@ export class PoolEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address;
 
-  @Column('varchar', { default: '', comment: '曲线地址' })
+  @Column('varchar', { default: '', comment: '曲线地址（线性：，指数：）' })
   curve_address;
 
   @Column('varchar', { default: '', comment: '收款方地址' })
@@ -50,7 +50,7 @@ export class PoolEntity extends BaseEntity {
     precision: 36,
     scale: 20,
     default: 0,
-    comment: '初始价格',
+    comment: '初始价格（当前价格）',
   })
   initial_price;
 

@@ -35,7 +35,7 @@ export class ContractEntity extends BaseEntity {
     precision: 36,
     scale: 20,
     default: 0,
-    comment: '地板价',
+    comment: '地板价(卖池的最低价)',
   })
   floor_price;
 
@@ -43,7 +43,7 @@ export class ContractEntity extends BaseEntity {
     precision: 36,
     scale: 20,
     default: 0,
-    comment: '最高报价',
+    comment: '最高报价（买池的最高价）',
   })
   top_price;
 
@@ -110,14 +110,6 @@ export class ContractEntity extends BaseEntity {
     comment: '30天涨跌幅',
   })
   monthly_range;
-
-  @Column('decimal', {
-    precision: 36,
-    scale: 20,
-    default: 0,
-    comment: '涨跌幅基准（0点数据）',
-  })
-  basic_range;
 
   @Column('int', { default: 0, comment: '是否认证（是:1 否:0）' })
   is_verified;

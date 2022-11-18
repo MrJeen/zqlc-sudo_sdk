@@ -1,9 +1,10 @@
 import { Transform } from 'class-transformer';
 import _ from 'lodash';
+import BigNumber from 'bignumber.js';
 
 // 移除小数点后面多余的0，小数点后面只有0时，移除小数
 export function FormatNumber() {
-  return Transform(({ value }) => value.replace(/(?<=\.\d*)0+$|\.0*$/, ''));
+  return Transform(({ value }) => (value ? BigNumber(value).toFixed() : value));
 }
 
 // 转为小写字母
