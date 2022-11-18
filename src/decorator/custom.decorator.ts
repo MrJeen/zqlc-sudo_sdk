@@ -20,3 +20,8 @@ export function ToUpperCase() {
 export function Trim(char = ' ') {
   return Transform(({ value }) => (value ? _.trim(value, char) : value));
 }
+
+// 复制其他键值
+export function Duplicate(key) {
+  return Transform(({ value, obj }) => value ?? obj[key]);
+}
