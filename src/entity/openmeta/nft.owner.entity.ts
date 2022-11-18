@@ -34,6 +34,10 @@ export class NftOwnerEntity extends BaseEntity {
       name: 'contract_address',
       referencedColumnName: 'contract_address',
     },
+    {
+      name: 'token_id',
+      referencedColumnName: 'token_id',
+    },
   ])
   nft: NftEntity;
 }
