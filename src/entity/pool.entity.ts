@@ -4,6 +4,7 @@ import { PoolNftEntity } from './pool.nft.entity';
 
 @Entity('pools')
 @Index(['chain_id', 'pool_address'], { unique: true })
+@Index(['token_address'])
 export class PoolEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;

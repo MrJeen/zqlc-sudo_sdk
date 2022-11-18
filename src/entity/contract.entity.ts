@@ -88,24 +88,24 @@ export class ContractEntity extends BaseEntity {
   monthly_amount;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 8,
+    scale: 4,
     default: 0,
     comment: '24小时涨跌幅',
   })
   daily_range;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 8,
+    scale: 4,
     default: 0,
     comment: '7天涨跌幅',
   })
   weekly_range;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 8,
+    scale: 4,
     default: 0,
     comment: '30天涨跌幅',
   })
