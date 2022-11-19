@@ -19,12 +19,6 @@ export class ContractEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '系列创建者' })
   creator;
 
-  @Column('int', { default: 0, comment: '持有人数' })
-  owner_statistics;
-
-  @Column('int', { default: 0, comment: 'nft个数' })
-  nft_statistics;
-
   @Column('int', { default: 0, comment: '列出数量（卖池中的NFT数量）' })
   list_volume;
 
