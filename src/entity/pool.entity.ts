@@ -1,4 +1,4 @@
-import { Column, Entity, Index, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, Index, OneToMany } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { PoolNftEntity } from './pool.nft.entity';
 import { now } from 'moment';
@@ -63,7 +63,7 @@ export class PoolEntity extends BaseEntity {
   })
   balance;
 
-  @Column('timestamp', { default: now(), comment: '池子创建时间' })
+  @Column('timestamp', { default: new Date(), comment: '池子创建时间' })
   create_time;
 
   @Column('int', { default: 0, comment: '池子创建时的区块' })

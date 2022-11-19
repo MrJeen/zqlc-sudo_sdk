@@ -17,7 +17,7 @@ export class OrderEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address;
 
-  @Column('timestamp', { default: now(), comment: '交易时间' })
+  @Column('timestamp', { default: new Date(), comment: '交易时间' })
   create_time;
 
   @Column('int', { default: 0, comment: '交易区块' })
