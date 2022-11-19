@@ -3,7 +3,7 @@ import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
 import { PoolEntity } from './pool.entity';
 
 @Entity('pool_nfts')
-@Index(['pool_id'], { unique: true })
+@Index(['pool_id', 'token_id'], { unique: true })
 @Index(['token_address'])
 export class PoolNftEntity extends BaseEntity {
   @Column('bigint', { default: 0, comment: '池子ID' })

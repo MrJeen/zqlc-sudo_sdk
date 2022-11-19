@@ -3,7 +3,7 @@ import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
 import { OrderEntity } from './order.entity';
 
 @Entity('order_nfts')
-@Index(['order_id'], { unique: true })
+@Index(['order_id', 'token_id'], { unique: true })
 export class OrderNftEntity extends BaseEntity {
   @Column('bigint', { default: 0, comment: '订单ID' })
   order_id;
