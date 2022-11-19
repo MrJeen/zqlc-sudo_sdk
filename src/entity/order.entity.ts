@@ -1,6 +1,7 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity, Index, OneToOne } from 'typeorm';
+import { Column, Entity, Index, OneToMany, OneToOne } from 'typeorm';
 import { OrderNftEntity } from './order.nft.entity';
+import { now } from 'moment';
 
 @Entity('orders')
 @Index(['pool_address'])
@@ -15,6 +16,9 @@ export class OrderEntity extends BaseEntity {
 
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address;
+
+  @Column('timestamp', { default: now(), comment: '交易时间' })
+  block_time;
 
   @Column('int', { default: 0, comment: '交易区块' })
   block_number;
@@ -45,6 +49,6 @@ export class OrderEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '交易的nft数量' })
   nft_count;
 
-  @OneToOne(() => OrderNftEntity, (nft: OrderNftEntity) => nft.order)
-  nft: OrderNftEntity;
+  @OneToMany(() => OrderNftEntity, (nft: OrderNftEntity) => nft.order)
+  nfts: OrderNftEntity[];
 }

@@ -105,9 +105,6 @@ export class ContractEntity extends BaseEntity {
   })
   monthly_range;
 
-  @Column('int', { default: 0, comment: '是否认证（是:1 否:0）' })
-  is_verified;
-
   @Column('int', {
     default: CONTRACT_STATUS.UPPER,
     comment: '状态（已上架:20 已下架:30 已隐藏:90）',

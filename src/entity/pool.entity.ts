@@ -1,6 +1,7 @@
-import { Column, Entity, Index, OneToOne } from 'typeorm';
+import { Column, Entity, Index, OneToMany, OneToOne } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { PoolNftEntity } from './pool.nft.entity';
+import { now } from 'moment';
 
 @Entity('pools')
 @Index(['chain_id', 'pool_address'], { unique: true })
@@ -62,6 +63,9 @@ export class PoolEntity extends BaseEntity {
   })
   balance;
 
+  @Column('timestamp', { default: now(), comment: '池子创建时间' })
+  create_time;
+
   @Column('int', { default: 0, comment: '池子创建时的区块' })
   create_block_number;
 
@@ -71,6 +75,6 @@ export class PoolEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '创建哈希' })
   create_transaction_hash;
 
-  @OneToOne(() => PoolNftEntity, (nft: PoolNftEntity) => nft.pool)
-  nft: PoolNftEntity;
+  @OneToMany(() => PoolNftEntity, (nft: PoolNftEntity) => nft.pool)
+  nfts: PoolNftEntity[];
 }
