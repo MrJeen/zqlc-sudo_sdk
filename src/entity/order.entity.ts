@@ -18,7 +18,7 @@ export class OrderEntity extends BaseEntity {
   token_address;
 
   @Column('timestamp', { default: now(), comment: '交易时间' })
-  block_time;
+  create_time;
 
   @Column('int', { default: 0, comment: '交易区块' })
   block_number;
