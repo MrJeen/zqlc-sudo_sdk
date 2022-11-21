@@ -1,5 +1,5 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity, Index, OneToMany } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, OneToMany } from 'typeorm';
 import { OrderNftEntity } from './order.nft.entity';
 
 @Entity('orders')
@@ -49,5 +49,6 @@ export class OrderEntity extends BaseEntity {
   nft_count;
 
   @OneToMany(() => OrderNftEntity, (nft: OrderNftEntity) => nft.order)
+  @JoinColumn({ name: 'id' })
   nfts: OrderNftEntity[];
 }

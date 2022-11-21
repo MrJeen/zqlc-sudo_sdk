@@ -1,5 +1,6 @@
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, OneToMany } from 'typeorm';
 import { BaseEntity, CONTRACT_STATUS } from './base.entity';
+import { PoolEntity } from './pool.entity';
 
 @Entity('contracts')
 @Index(['chain_id', 'token_address'], { unique: true })
@@ -113,4 +114,17 @@ export class ContractEntity extends BaseEntity {
 
   @Column('int', { default: 0, comment: '是否首页展示（是:1 否:0）' })
   show_on_home_page;
+
+  @OneToMany(() => PoolEntity, (pool: PoolEntity) => pool.contract)
+  @JoinColumn([
+    {
+      name: 'chain_id',
+      referencedColumnName: 'chain_id',
+    },
+    {
+      name: 'token_address',
+      referencedColumnName: 'token_address',
+    },
+  ])
+  pools: PoolEntity[];
 }

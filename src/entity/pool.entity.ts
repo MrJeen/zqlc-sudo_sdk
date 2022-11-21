@@ -1,6 +1,14 @@
-import { Column, Entity, Index, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { PoolNftEntity } from './pool.nft.entity';
+import { ContractEntity } from './contract.entity';
 
 @Entity('pools')
 @Index(['chain_id', 'pool_address'], { unique: true })
@@ -75,5 +83,19 @@ export class PoolEntity extends BaseEntity {
   create_transaction_hash;
 
   @OneToMany(() => PoolNftEntity, (nft: PoolNftEntity) => nft.pool)
+  @JoinColumn({ name: 'id' })
   nfts: PoolNftEntity[];
+
+  @ManyToOne(() => ContractEntity)
+  @JoinColumn([
+    {
+      name: 'chain_id',
+      referencedColumnName: 'chain_id',
+    },
+    {
+      name: 'token_address',
+      referencedColumnName: 'token_address',
+    },
+  ])
+  contract: ContractEntity;
 }
