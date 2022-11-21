@@ -70,6 +70,14 @@ export class PoolEntity extends BaseEntity {
   })
   balance;
 
+  @Column('decimal', {
+    precision: 36,
+    scale: 20,
+    default: 0,
+    comment: '池子的交易量',
+  })
+  total_amount;
+
   @Column('int', { default: 0, comment: 'nft数量' })
   nft_count;
 
