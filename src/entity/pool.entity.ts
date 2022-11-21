@@ -70,6 +70,9 @@ export class PoolEntity extends BaseEntity {
   })
   balance;
 
+  @Column('int', { default: 0, comment: 'nft数量' })
+  nft_count;
+
   @Column('timestamp', { default: () => 'NOW()', comment: '池子创建时间' })
   create_time;
 
