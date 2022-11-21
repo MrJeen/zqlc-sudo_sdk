@@ -1,6 +1,6 @@
 import { NftOwnerEntity } from './nft.owner.entity';
 import { NftEntity } from './nft.entity';
-import { Column, Entity, JoinColumn, OneToMany } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../base.entity';
 
 @Entity('collections')
@@ -42,10 +42,8 @@ export class CollectionEntity extends BaseEntity {
   token_protocol: string;
 
   @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.collection)
-  @JoinColumn({ referencedColumnName: 'collection_id' })
   owners: NftOwnerEntity[];
 
   @OneToMany(() => NftEntity, (nft: NftEntity) => nft.collection)
-  @JoinColumn({ referencedColumnName: 'collection_id' })
   nfts: NftEntity[];
 }
