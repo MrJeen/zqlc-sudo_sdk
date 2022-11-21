@@ -1,4 +1,4 @@
-import { Column, Entity, Index, JoinColumn, OneToMany } from 'typeorm';
+import { Column, Entity, Index, OneToMany } from 'typeorm';
 import { BaseEntity, CONTRACT_STATUS } from './base.entity';
 import { PoolEntity } from './pool.entity';
 
@@ -116,15 +116,5 @@ export class ContractEntity extends BaseEntity {
   show_on_home_page;
 
   @OneToMany(() => PoolEntity, (pool: PoolEntity) => pool.contract)
-  @JoinColumn([
-    {
-      name: 'chain_id',
-      referencedColumnName: 'chain_id',
-    },
-    {
-      name: 'token_address',
-      referencedColumnName: 'token_address',
-    },
-  ])
   pools: PoolEntity[];
 }

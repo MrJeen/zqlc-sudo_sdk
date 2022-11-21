@@ -28,19 +28,5 @@ export class NftEntity extends BaseEntity {
   collection: CollectionEntity;
 
   @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.nft)
-  @JoinColumn([
-    {
-      name: 'chain_id',
-      referencedColumnName: 'chain_id',
-    },
-    {
-      name: 'contract_address',
-      referencedColumnName: 'contract_address',
-    },
-    {
-      name: 'token_id',
-      referencedColumnName: 'token_id',
-    },
-  ])
   owners: NftOwnerEntity[];
 }
