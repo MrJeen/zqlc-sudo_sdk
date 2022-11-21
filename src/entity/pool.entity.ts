@@ -86,7 +86,6 @@ export class PoolEntity extends BaseEntity {
   create_transaction_hash;
 
   @OneToMany(() => PoolNftEntity, (nft: PoolNftEntity) => nft.pool)
-  @JoinColumn({ name: 'id' })
   nfts: PoolNftEntity[];
 
   @ManyToOne(() => ContractEntity)
