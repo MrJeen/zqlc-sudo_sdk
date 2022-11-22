@@ -14,7 +14,7 @@ export function ToLowerCase() {
 
 // 转为大写字母
 export function ToUpperCase() {
-  return Transform(({ value }) => (value ? value.toLowerCase() : value));
+  return Transform(({ value }) => (value ? value.toUpperCase() : value));
 }
 
 // 移除字符串两端空格或指定字符
