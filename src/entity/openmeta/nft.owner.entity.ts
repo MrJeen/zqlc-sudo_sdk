@@ -1,10 +1,10 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { CollectionEntity } from './collection.entity';
 import { NftEntity } from './nft.entity';
-import { BaseEntity } from '../base.entity';
+import { OpenMetaBaseEntity } from '../base.entity';
 
 @Entity('nft_owners')
-export class NftOwnerEntity extends BaseEntity {
+export class NftOwnerEntity extends OpenMetaBaseEntity {
   @Column()
   chain_id: number;
 

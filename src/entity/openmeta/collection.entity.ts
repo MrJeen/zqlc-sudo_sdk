@@ -1,10 +1,10 @@
 import { NftOwnerEntity } from './nft.owner.entity';
 import { NftEntity } from './nft.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
-import { BaseEntity } from '../base.entity';
+import { OpenMetaBaseEntity } from '../base.entity';
 
 @Entity('collections')
-export class CollectionEntity extends BaseEntity {
+export class CollectionEntity extends OpenMetaBaseEntity {
   @Column()
   name: number;
 
