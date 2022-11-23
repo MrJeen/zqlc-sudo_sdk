@@ -3,8 +3,14 @@ import { Column, Entity, Index } from 'typeorm';
 
 @Entity('nft_transfer_logs')
 @Index(['token_address', 'token_id'])
-@Index(['transaction_hash', 'log_index'], { unique: true })
+@Index(['log_hash'], { unique: true })
 export class NftTransferLogEntity extends BaseEntity {
+  @Column('varchar', {
+    default: '',
+    comment: '日志哈希（MD5(chain_id+transaction_hash+log_index+token_id)）',
+  })
+  log_hash;
+
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
 
