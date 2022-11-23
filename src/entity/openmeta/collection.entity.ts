@@ -41,6 +41,15 @@ export class CollectionEntity extends OpenMetaBaseEntity {
   @Column()
   token_protocol: string;
 
+  @Column({ type: 'json' })
+  metadata;
+
+  @Column({ type: 'json' })
+  properties;
+
+  @Column({ type: 'json' })
+  rarity;
+
   @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.collection)
   owners: NftOwnerEntity[];
 

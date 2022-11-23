@@ -2,7 +2,7 @@ import { BaseEntity } from './base.entity';
 import { Column, Entity, Index } from 'typeorm';
 
 @Entity('nft_transfer_logs')
-@Index(['token_address', 'token_id'])
+@Index(['chain_id', 'token_address', 'token_id'])
 @Index(['log_hash'], { unique: true })
 export class NftTransferLogEntity extends BaseEntity {
   @Column('varchar', {
