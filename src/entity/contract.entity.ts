@@ -86,7 +86,7 @@ export class ContractEntity extends BaseEntity {
     precision: 8,
     scale: 4,
     default: 0,
-    comment: '24小时涨跌幅',
+    comment: '24小时交易量涨跌幅',
   })
   daily_range;
 
@@ -94,7 +94,7 @@ export class ContractEntity extends BaseEntity {
     precision: 8,
     scale: 4,
     default: 0,
-    comment: '7天涨跌幅',
+    comment: '7天交易量涨跌幅',
   })
   weekly_range;
 
@@ -102,9 +102,17 @@ export class ContractEntity extends BaseEntity {
     precision: 8,
     scale: 4,
     default: 0,
-    comment: '30天涨跌幅',
+    comment: '30天交易量涨跌幅',
   })
   monthly_range;
+
+  @Column('decimal', {
+    precision: 8,
+    scale: 4,
+    default: 0,
+    comment: '24小时地板价涨跌幅',
+  })
+  daily_price_range;
 
   @Column('int', {
     default: CONTRACT_STATUS.UPPER,
