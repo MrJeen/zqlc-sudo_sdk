@@ -3,7 +3,7 @@ import { Column, Entity, Index } from 'typeorm';
 
 @Entity('contract_floor_price_log')
 @Index(['chain_id', 'token_address'])
-export class ContractFloorPriceLog extends BaseEntity {
+export class ContractFloorPriceLogEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
 
