@@ -9,7 +9,6 @@ import {
 import { BaseEntity } from './base.entity';
 import { PoolNftEntity } from './pool.nft.entity';
 import { ContractEntity } from './contract.entity';
-import { PoolPriceLogEntity } from './pool.price.log.entity';
 
 @Entity('pools')
 @Index(['chain_id', 'pool_address'], { unique: true })
@@ -112,10 +111,4 @@ export class PoolEntity extends BaseEntity {
     },
   ])
   contract: ContractEntity;
-
-  @OneToMany(
-    () => PoolPriceLogEntity,
-    (priceLog: PoolPriceLogEntity) => priceLog.pool,
-  )
-  price_logs: PoolPriceLogEntity[];
 }
