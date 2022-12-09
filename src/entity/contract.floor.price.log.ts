@@ -1,8 +1,8 @@
 import { BaseEntity } from './base.entity';
 import { Column, Entity } from 'typeorm';
 
-@Entity('pool_price_log')
-export class PoolPriceLogEntity extends BaseEntity {
+@Entity('contract_floor_price_log')
+export class ContractFloorPriceLog extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
 
