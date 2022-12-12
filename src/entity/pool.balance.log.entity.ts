@@ -5,7 +5,7 @@ import { BaseEntity } from './base.entity';
  * 所有买池（包括流动池）的余额变化
  */
 @Entity('pool_balance_log')
-@Index(['offer_date'])
+@Index(['chain_id, offer_date'], { unique: true })
 export class PoolBalanceLogEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
