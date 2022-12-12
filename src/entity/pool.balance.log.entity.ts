@@ -7,6 +7,9 @@ import { BaseEntity } from './base.entity';
 @Entity('pool_balance_log')
 @Index(['offer_date'])
 export class PoolBalanceLogEntity extends BaseEntity {
+  @Column('int', { default: 0, comment: '区块链id' })
+  chain_id;
+
   @Column('varchar', { default: '', comment: '日期' })
   offer_date;
 
