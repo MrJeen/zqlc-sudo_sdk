@@ -17,6 +17,12 @@ export class PoolTvlEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '池子地址' })
   pool_address;
 
+  @Column('int2', {
+    default: 0,
+    comment: '池子类型（0: 买池，1: 卖池，2:流动池）',
+  })
+  pool_type;
+
   @Column('varchar', { default: '', comment: '日期' })
   date;
 
