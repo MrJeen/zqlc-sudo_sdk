@@ -81,6 +81,14 @@ export class PoolEntity extends BaseEntity {
   })
   total_amount;
 
+  @Column('decimal', {
+    precision: 36,
+    scale: 20,
+    default: 0,
+    comment: '池子最近24小时的交易量',
+  })
+  daily_amount;
+
   @Column('int', { default: 0, comment: 'nft数量' })
   nft_count;
 
