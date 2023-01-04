@@ -37,6 +37,10 @@ export enum ORDER_COLUMN {
   'QUOTE_TVL' = 'quote_tvl',
   'DAILY_AMOUNT' = 'daily_amount',
   'DAILY_RANGE' = 'daily_range',
+  'WEEKLY_AMOUNT' = 'weekly_amount',
+  'WEEKLY_RANGE' = 'weekly_range',
+  'MONTHLY_AMOUNT' = 'monthly_amount',
+  'MONTHLY_RANGE' = 'monthly_range',
 }
 
 // 排序
