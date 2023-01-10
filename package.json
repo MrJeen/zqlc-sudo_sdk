@@ -4,7 +4,9 @@
   "description": "",
   "main": "./index.js",
   "scripts": {
-    "build": "tsc --b tsconfig.build.json"
+    "build": "rimraf -rf lib && tsc -p tsconfig.json",
+    "prepublish:npm": "yarn build",
+    "publish:npm": "npm version patch && npm publish"
   },
   "author": "zqlc",
   "license": "ISC",
