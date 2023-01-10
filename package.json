@@ -2,7 +2,8 @@
   "name": "@zqlc/sudo_sdk",
   "version": "1.0.71",
   "description": "",
-  "main": "./index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rimraf -rf lib && tsc -p tsconfig.json",
     "prepublish:npm": "yarn build",
