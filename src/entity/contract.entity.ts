@@ -114,6 +114,22 @@ export class ContractEntity extends BaseEntity {
   })
   daily_price_range;
 
+  @Column('decimal', {
+    precision: 8,
+    scale: 4,
+    default: 0,
+    comment: '7天地板价涨跌幅',
+  })
+  weekly_price_range;
+
+  @Column('decimal', {
+    precision: 8,
+    scale: 4,
+    default: 0,
+    comment: '30天地板价涨跌幅',
+  })
+  monthly_price_range;
+
   @Column('int', {
     default: CONTRACT_STATUS.UPPER,
     comment: '状态（已上架:20 已下架:30 已隐藏:90）',
