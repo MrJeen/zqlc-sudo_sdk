@@ -1,15 +1,15 @@
 import { ethers } from 'ethers';
 import { JsonRpcProvider } from '@ethersproject/providers/src.ts/json-rpc-provider';
 import { Interface } from '@ethersproject/abi/src.ts/interface';
-import { CHAIN } from '../entity/base.entity';
+import { loadBalance } from './helper.util';
+import { RPC_NODE } from 'config/constant';
 
 /**
  * 获取节点
  * @param chainId
  */
 export function getNode(chainId: number): string {
-  // eg: EHT_NODE
-  return process.env[CHAIN[chainId] + '_NODE'];
+  return loadBalance(RPC_NODE[chainId]);
 }
 
 /**
