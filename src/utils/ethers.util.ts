@@ -2,7 +2,7 @@ import { ethers } from 'ethers';
 import { JsonRpcProvider } from '@ethersproject/providers/src.ts/json-rpc-provider';
 import { Interface } from '@ethersproject/abi/src.ts/interface';
 import { loadBalance } from './helper.util';
-import { RPC_NODE } from 'config/constant';
+import { RPC_NODE } from '../config/constant';
 
 /**
  * 获取节点
