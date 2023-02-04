@@ -45,6 +45,14 @@ export class PoolEntity extends BaseEntity {
     precision: 36,
     scale: 20,
     default: 0,
+    comment: '调整预设增量',
+  })
+  delta;
+
+  @Column('decimal', {
+    precision: 36,
+    scale: 20,
+    default: 0,
     comment: '增量',
   })
   curve_increment;
