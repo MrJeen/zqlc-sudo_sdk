@@ -48,3 +48,13 @@ export const RPC_NODE: RPC_NODE_TYPE = {
     },
   ],
 };
+
+// 线性曲线地址
+export const CURVE_LINEAR_ADDRESS =
+  process.env.CURVE_LINEAR_ADDRESS ??
+  '0x62E83F7c4ED486F22def0e0614Fb8254df64cC17';
+
+// 指数曲线地址
+export const CURVE_EXPONENTIAL_ADDRESS =
+  process.env.CURVE_EXPONENTIAL_ADDRESS ??
+  '0xED895091191865930E99a67fBfaD5B7Bfb14a290';
