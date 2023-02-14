@@ -49,3 +49,13 @@ export function loadBalance(data: BalanceData[]) {
 
   return current.target;
 }
+
+/**
+ * 转数字
+ * @param target
+ * @returns
+ */
+export function toNumber(target: any) {
+  const result = Number(target);
+  return isNaN(result) ? 0 : result;
+}
