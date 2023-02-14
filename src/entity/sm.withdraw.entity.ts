@@ -18,7 +18,7 @@ export class SmWithdrawEntity extends BaseEntity {
   user_address;
 
   @Column('decimal', {
-    precision: 36,
+    precision: 56,
     scale: 18,
     default: 0,
     comment: '提取金额',

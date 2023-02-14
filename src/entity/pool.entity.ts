@@ -42,64 +42,64 @@ export class PoolEntity extends BaseEntity {
   type;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '调整预设增量',
   })
   delta;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '增量',
   })
   curve_increment;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '手续费',
   })
   fee;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '初始价格（当前价格）',
   })
   initial_price;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '当前价（包含手续费）',
   })
   buy_price;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '池子里eth数量',
   })
   balance;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '池子的交易量',
   })
   total_amount;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '池子最近24小时的交易量',
   })

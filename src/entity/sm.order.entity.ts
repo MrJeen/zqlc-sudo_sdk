@@ -21,7 +21,7 @@ export class SmOrderEntity extends BaseEntity {
   type;
 
   @Column('decimal', {
-    precision: 36,
+    precision: 56,
     scale: 18,
     default: 0,
     comment: '交易金额',

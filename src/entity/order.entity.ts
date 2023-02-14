@@ -38,8 +38,8 @@ export class OrderEntity extends BaseEntity {
   to_address;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '价格',
   })

@@ -27,112 +27,112 @@ export class ContractEntity extends BaseEntity {
   pool_statistics;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '地板价(卖池的最低价)',
   })
   floor_price;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '地板价（包含手续费）',
   })
   floor_buy_price;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '最高报价（买池的最高价）',
   })
   top_price;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '报价TVL（所有买盘流动性，即价值总和）',
   })
   quote_tvl;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '总成交额',
   })
   total_amount;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '24小时成交额',
   })
   daily_amount;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '7天成交额',
   })
   weekly_amount;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '30天成交额',
   })
   monthly_amount;
 
   @Column('decimal', {
-    precision: 8,
-    scale: 4,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '24小时交易量涨跌幅',
   })
   daily_range;
 
   @Column('decimal', {
-    precision: 8,
-    scale: 4,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '7天交易量涨跌幅',
   })
   weekly_range;
 
   @Column('decimal', {
-    precision: 8,
-    scale: 4,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '30天交易量涨跌幅',
   })
   monthly_range;
 
   @Column('decimal', {
-    precision: 8,
-    scale: 4,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '24小时地板价涨跌幅',
   })
   daily_price_range;
 
   @Column('decimal', {
-    precision: 8,
-    scale: 4,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '7天地板价涨跌幅',
   })
   weekly_price_range;
 
   @Column('decimal', {
-    precision: 8,
-    scale: 4,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '30天地板价涨跌幅',
   })

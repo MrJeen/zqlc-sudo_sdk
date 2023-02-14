@@ -15,16 +15,16 @@ export class SmContractEntity extends BaseEntity {
   token_address;
 
   @Column('decimal', {
-    precision: 4,
-    scale: 2,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '权重',
   })
   weight;
 
   @Column('decimal', {
-    precision: 3,
-    scale: 2,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '权重比例',
   })
@@ -52,7 +52,7 @@ export class SmContractEntity extends BaseEntity {
   mining_date;
 
   @Column('decimal', {
-    precision: 36,
+    precision: 56,
     scale: 18,
     default: 0,
     comment: '当前总奖励',
@@ -60,7 +60,7 @@ export class SmContractEntity extends BaseEntity {
   reward;
 
   @Column('decimal', {
-    precision: 36,
+    precision: 56,
     scale: 18,
     default: 0,
     comment: '累计交易总额',
@@ -68,7 +68,7 @@ export class SmContractEntity extends BaseEntity {
   total_swap_amount;
 
   @Column('decimal', {
-    precision: 36,
+    precision: 56,
     scale: 18,
     default: 0,
     comment: '当前交易额',

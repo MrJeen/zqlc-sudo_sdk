@@ -27,8 +27,8 @@ export class PoolTvlEntity extends BaseEntity {
   date;
 
   @Column('decimal', {
-    precision: 36,
-    scale: 20,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '余额',
   })

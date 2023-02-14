@@ -14,8 +14,8 @@ export class SmManualContractEntity extends BaseEntity {
   token_address;
 
   @Column('decimal', {
-    precision: 4,
-    scale: 2,
+    precision: 56,
+    scale: 18,
     default: 0,
     comment: '权重',
   })
