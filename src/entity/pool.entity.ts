@@ -77,6 +77,14 @@ export class PoolEntity extends BaseEntity {
     precision: 36,
     scale: 20,
     default: 0,
+    comment: '当前价（包含手续费）',
+  })
+  buy_price;
+
+  @Column('decimal', {
+    precision: 36,
+    scale: 20,
+    default: 0,
     comment: '池子里eth数量',
   })
   balance;
