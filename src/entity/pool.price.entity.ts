@@ -30,4 +30,12 @@ export class PoolPriceEntity extends BaseEntity {
     comment: '当前价',
   })
   price;
+
+  @Column('decimal', {
+    precision: 36,
+    scale: 20,
+    default: 0,
+    comment: '当前价（包含手续费）',
+  })
+  buy_price;
 }
