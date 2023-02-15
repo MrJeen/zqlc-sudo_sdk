@@ -18,7 +18,9 @@ export function getNode(chainId: number): string {
  */
 export function getJsonRpcProvider(chainId: number): JsonRpcProvider {
   const node = getNode(chainId);
-  return new ethers.providers.JsonRpcProvider(node);
+  const provider = new ethers.providers.JsonRpcProvider(node);
+  provider['node'] = node;
+  return provider;
 }
 
 /**
