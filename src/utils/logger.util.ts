@@ -1,86 +1,9 @@
 import configuration from '../config/base.config';
 import Log4js from 'log4js';
-import Util from 'util';
-import Moment from 'moment';
 import StackTrace from 'stacktrace-js';
 import Path from 'path';
 import { sendMessage } from './dingtalk.util';
-import Chalk from 'chalk';
 import _ from 'lodash';
-
-// 内容跟踪类
-export class ContextTrace {
-  constructor(
-    public readonly context: string,
-    public readonly lineNumber?: number,
-    public readonly columnNumber?: number,
-  ) {}
-}
-
-// 添加自定义布局，需要在 log4js.configure() 之前调用
-Log4js.addLayout('Awesome-nest', (logConfig: any) => {
-  return (logEvent: Log4js.LoggingEvent): string => {
-    let moduleName = '';
-    let position = '';
-
-    //日志组装
-    const messageList: string[] = [];
-    logEvent.data.forEach((value: any) => {
-      if (value instanceof ContextTrace) {
-        moduleName = value.context;
-        //显示触发日志的坐标（行/列）
-        if (value.lineNumber && value.columnNumber) {
-          position = `${value.lineNumber},${value.columnNumber}`;
-        }
-        return;
-      }
-      if (typeof value !== 'string') {
-        value = Util.inspect(value, false, 3, true);
-      }
-      messageList.push(value);
-    });
-    //日志组成部分
-    const messageOutput: string = messageList.join(' ');
-    const positionOutput: string = position ? `[${position}]` : '';
-    const typeOutput = `[${logConfig.type}]${logEvent.pid.toString()} - `;
-    const dateOutput = `${Moment(logEvent.startTime).format(
-      'YYYY-MM-DD HH:mm:ss',
-    )}`;
-    const moduleOutput: string = moduleName
-      ? `[${moduleName}]`
-      : '[LoggerService]';
-    let levelOutput = `[${logEvent.level}]${messageOutput}`;
-    //根据日志级别，用不同颜色区分
-    switch (logEvent.level.toString()) {
-      case Log4js.levels.DEBUG.levelStr:
-        levelOutput = Chalk.green(levelOutput);
-        break;
-
-      case Log4js.levels.INFO.levelStr:
-        levelOutput = Chalk.cyan(levelOutput);
-        break;
-
-      case Log4js.levels.WARN.levelStr:
-        levelOutput = Chalk.yellow(levelOutput);
-        break;
-
-      case Log4js.levels.ERROR.levelStr:
-        levelOutput = Chalk.red(levelOutput);
-        break;
-
-      case Log4js.levels.FATAL.levelStr:
-        levelOutput = Chalk.hex('#DD4C35')(levelOutput);
-        break;
-
-      default:
-        levelOutput = Chalk.grey(levelOutput);
-        break;
-    }
-    return `${levelOutput} ${positionOutput} ${Chalk.green(
-      typeOutput,
-    )} ${dateOutput} ${Chalk.yellow(moduleOutput)}`;
-  };
-});
 
 // 注入配置(这时候还加载不了.env配置，注意不要引用.env里的参数)
 const config = configuration();
