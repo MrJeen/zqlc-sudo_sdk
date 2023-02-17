@@ -77,9 +77,17 @@ export class PoolEntity extends BaseEntity {
     precision: 56,
     scale: 18,
     default: 0,
-    comment: '当前价（包含手续费）',
+    comment: '用户购买价（卖池和双边池）',
   })
   buy_price;
+
+  @Column('decimal', {
+    precision: 56,
+    scale: 18,
+    default: 0,
+    comment: '用户售价（买池和双边池）',
+  })
+  sell_price;
 
   @Column('decimal', {
     precision: 56,
