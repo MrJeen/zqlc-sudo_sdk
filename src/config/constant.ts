@@ -90,3 +90,6 @@ export const CURVE_LINEAR_ADDRESS =
 export const CURVE_EXPONENTIAL_ADDRESS =
   process.env.CURVE_EXPONENTIAL_ADDRESS ??
   '0xED895091191865930E99a67fBfaD5B7Bfb14a290';
+
+// 平台手续费比例
+export const PLATFORM_FEE = 0.1;
