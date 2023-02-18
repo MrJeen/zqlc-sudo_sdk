@@ -38,14 +38,6 @@ export class ContractEntity extends BaseEntity {
     precision: 56,
     scale: 18,
     default: 0,
-    comment: '地板价（包含手续费）',
-  })
-  floor_buy_price;
-
-  @Column('decimal', {
-    precision: 56,
-    scale: 18,
-    default: 0,
     comment: '最高报价（买池的最高价）',
   })
   top_price;
