@@ -12,4 +12,7 @@ export class ChainEntity extends BaseEntity {
 
   @Column('int', { default: 0, comment: '最新区块' })
   latest_block;
+
+  @Column('int', { default: 0, comment: '交易挖矿最新区块' })
+  swap_mining_block;
 }
