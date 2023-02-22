@@ -17,11 +17,7 @@ export enum CONTRACT_STATUS {
 }
 
 export enum CHAIN {
-  ETH = 1,
   BSC = 56,
-  POLYGON = 137,
-  GOERLI = 5,
-  ZKSYNC = 280,
 }
 
 export enum CONTRACT_TYPE {
