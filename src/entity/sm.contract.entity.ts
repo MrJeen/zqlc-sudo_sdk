@@ -14,21 +14,8 @@ export class SmContractEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address;
 
-  @Column('decimal', {
-    precision: 56,
-    scale: 18,
-    default: 0,
-    comment: '权重',
-  })
+  @Column('smallint', { default: 0, comment: '权重（满值100）' })
   weight;
-
-  @Column('decimal', {
-    precision: 56,
-    scale: 18,
-    default: 0,
-    comment: '权重比例',
-  })
-  weight_percent;
 
   @Column('varchar', { default: '', comment: 'PID' })
   pid;

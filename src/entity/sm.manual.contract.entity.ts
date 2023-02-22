@@ -13,12 +13,7 @@ export class SmManualContractEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address;
 
-  @Column('decimal', {
-    precision: 56,
-    scale: 18,
-    default: 0,
-    comment: '权重',
-  })
+  @Column('smallint', { default: 0, comment: '权重（满值100）' })
   weight;
 
   @Column('timestamp', { default: () => 'NOW()', comment: '挖矿开始时间' })
