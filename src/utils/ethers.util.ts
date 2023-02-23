@@ -27,8 +27,7 @@ export function getJsonRpcProvider(chainId: number): JsonRpcProvider {
  * 获取钱包实例
  * @param abi
  */
-export function getWallet(chainId: number): Wallet {
-  const provider = getJsonRpcProvider(chainId);
+export function getWallet(provider: JsonRpcProvider): Wallet {
   return new ethers.Wallet(process.env.ETHER_PRIVATE_KEY, provider);
 }
 
