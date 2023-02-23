@@ -68,3 +68,8 @@ export class SmContractEntity extends BaseEntity {
   })
   swap_amount;
 }
+
+export enum SWAP_CONTRACT_TYPE {
+  AUTO = 'auto',
+  MANUAL = 'manual',
+}
