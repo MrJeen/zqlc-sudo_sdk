@@ -35,6 +35,12 @@ export class SmContractEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: '类型（auto, manual）' })
   type;
 
+  @Column('smallint', {
+    default: 0,
+    comment: '处理状态（0-未设置权重 20-设置成功）',
+  })
+  status;
+
   @Column('varchar', { default: '', comment: '挖矿日期' })
   mining_date;
 
