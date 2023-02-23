@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers, Wallet } from 'ethers';
 import { JsonRpcProvider } from '@ethersproject/providers/src.ts/json-rpc-provider';
 import { Interface } from '@ethersproject/abi/src.ts/interface';
 import { loadBalance } from './helper.util';
@@ -21,6 +21,15 @@ export function getJsonRpcProvider(chainId: number): JsonRpcProvider {
   const provider = new ethers.providers.JsonRpcProvider(node);
   provider['node'] = node;
   return provider;
+}
+
+/**
+ * 获取钱包实例
+ * @param abi
+ */
+export function getWallet(chainId: number): Wallet {
+  const provider = getJsonRpcProvider(chainId);
+  return new ethers.Wallet(process.env.ETHER_PRIVATE_KEY, provider);
 }
 
 /**
