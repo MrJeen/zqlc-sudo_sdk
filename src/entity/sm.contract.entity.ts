@@ -6,7 +6,6 @@ import { Column, Entity, Index } from 'typeorm';
  */
 @Entity('sm_contracts')
 @Index(['chain_id', 'token_address', 'mining_date'], { unique: true })
-@Index(['pid', 'mining_date'], { unique: true })
 export class SmContractEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
