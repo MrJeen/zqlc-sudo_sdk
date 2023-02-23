@@ -72,3 +72,8 @@ export enum SWAP_CONTRACT_TYPE {
   AUTO = 'auto',
   MANUAL = 'manual',
 }
+
+export enum SWAP_ALLOC_STATUS {
+  DEFAULT,
+  FINISHED = 20,
+}
