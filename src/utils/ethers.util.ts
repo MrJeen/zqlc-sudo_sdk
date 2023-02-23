@@ -48,7 +48,7 @@ export function getInterface(abi: any): Interface {
 export function getContract(
   address: string,
   abi: any,
-  provider: JsonRpcProvider,
+  provider: JsonRpcProvider | Wallet,
 ) {
   return new ethers.Contract(address, abi, provider);
 }
