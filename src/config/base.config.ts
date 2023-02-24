@@ -63,8 +63,6 @@ export default () => ({
   /******************************** 数据库配置 ***********************************/
   database: {
     type: 'postgres',
-    // 用local time
-    useUTC: false,
     host: process.env.POSTGRES_HOST || 'localhost',
     port: ~~process.env.POSTGRES_PORT || 5432,
     username: process.env.POSTGRES_USERNAME || 'root',
@@ -75,8 +73,6 @@ export default () => ({
 
   database_openmeta: {
     type: 'postgres',
-    // 用local time
-    useUTC: false,
     host: process.env.POSTGRES_OPENMETA_HOST || 'localhost',
     port: ~~process.env.POSTGRES_OPENMETA_PORT || 5432,
     username: process.env.POSTGRES_OPENMETA_USERNAME || 'root',
