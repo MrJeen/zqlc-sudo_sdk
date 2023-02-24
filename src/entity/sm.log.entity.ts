@@ -5,8 +5,9 @@ import { Column, Entity, Index } from 'typeorm';
  * 交易挖矿记录表
  */
 @Entity('sm_logs')
-@Index(['chain_id', 'token_address', 'user_address'])
-@Index(['block_number', 'transaction_hash', 'log_index'], { unique: true })
+@Index(['chain_id'])
+@Index(['token_address', 'user_address'])
+@Index(['chain_id', 'transaction_hash', 'log_index'], { unique: true })
 export class SmLogEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;

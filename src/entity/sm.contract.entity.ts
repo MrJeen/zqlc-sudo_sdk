@@ -5,7 +5,9 @@ import { Column, Entity, Index } from 'typeorm';
  * 交易挖矿系列表
  */
 @Entity('sm_contracts')
-@Index(['chain_id', 'token_address', 'mining_date'], { unique: true })
+@Index(['chain_id'])
+@Index(['token_address'])
+@Index(['start_time', 'end_time'])
 export class SmContractEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
@@ -39,9 +41,6 @@ export class SmContractEntity extends BaseEntity {
     comment: '处理状态（0-未设置权重 20-设置成功）',
   })
   status;
-
-  @Column('varchar', { default: '', comment: '挖矿日期' })
-  mining_date;
 
   @Column('decimal', {
     precision: 56,

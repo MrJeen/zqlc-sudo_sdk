@@ -6,7 +6,7 @@ import { Column, Entity, Index } from 'typeorm';
  */
 @Entity('sm_orders')
 @Index(['chain_id', 'token_address', 'user_address'])
-@Index(['block_number', 'transaction_hash', 'log_index'], { unique: true })
+@Index(['chain_id', 'transaction_hash', 'log_index'], { unique: true })
 export class SmOrderEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;

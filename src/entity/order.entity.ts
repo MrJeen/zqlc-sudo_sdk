@@ -5,7 +5,7 @@ import { OrderNftEntity } from './order.nft.entity';
 @Entity('orders')
 @Index(['pool_address'])
 @Index(['token_address'])
-@Index(['transaction_hash', 'log_index'], { unique: true })
+@Index(['chain_id', 'transaction_hash', 'log_index'], { unique: true })
 export class OrderEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
