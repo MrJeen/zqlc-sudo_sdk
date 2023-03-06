@@ -26,6 +26,9 @@ export class NftEntity extends OpenMetaBaseEntity {
   @Column()
   token_protocol: number;
 
+  @Column()
+  is_mint: boolean;
+
   @Column({ type: 'json' })
   metadata;
 
