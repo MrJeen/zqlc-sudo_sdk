@@ -2,15 +2,19 @@ import { ethers, Wallet } from 'ethers';
 import { JsonRpcProvider } from '@ethersproject/providers/src.ts/json-rpc-provider';
 import { Interface } from '@ethersproject/abi/src.ts/interface';
 import { loadBalance } from './helper.util';
-import { RPC_NODE } from '../config/constant';
+import { selectNetwork } from '../config/constant';
 
 /**
  * 获取节点
  * @param chainId
  */
-export function getNode(chainId: number): string {
-  return loadBalance(RPC_NODE[chainId]);
-}
+export const getNode = (chainId: number): string => {
+  const network = selectNetwork(chainId);
+  if (!network) {
+    throw Error(`network #${chainId} not found`);
+  }
+  return loadBalance(network.node);
+};
 
 /**
  * 获取provider
