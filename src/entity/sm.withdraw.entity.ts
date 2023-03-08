@@ -33,4 +33,7 @@ export class SmWithdrawEntity extends BaseEntity {
 
   @Column('int', { default: 0, comment: '日志索引值' })
   log_index;
+
+  @Column('varchar', { default: '', comment: 'PID' })
+  pid;
 }
