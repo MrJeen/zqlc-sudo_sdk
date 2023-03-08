@@ -46,14 +46,6 @@ export class SmContractEntity extends BaseEntity {
     precision: 56,
     scale: 18,
     default: 0,
-    comment: '当前总奖励',
-  })
-  reward;
-
-  @Column('decimal', {
-    precision: 56,
-    scale: 18,
-    default: 0,
     comment: '累计交易总额',
   })
   total_swap_amount;
