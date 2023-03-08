@@ -21,6 +21,8 @@ export type NETWORK_TYPE = {
   name: string;
   chainId: number;
   transferIncr: number;
+  swap_address: string;
+  per_block_time: number;
   node: BALANCE_TYPE[];
 };
 
@@ -28,6 +30,10 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   name: 'BSC',
   chainId: 56,
   transferIncr: 8,
+  swap_address:
+    process.env.BSC_SWAP_MINING_ADDRESS ||
+    '0x86c37A2406e2fC4FD570c3acb0af206c85ee3556',
+  per_block_time: 3, // 单位:s
   node: [
     {
       target:
