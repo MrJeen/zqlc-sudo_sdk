@@ -1,4 +1,4 @@
-import { BalanceData } from 'config/constant';
+import { BALANCE_TYPE } from '../config/constant';
 
 /**
  * pm2 0实例
@@ -26,7 +26,7 @@ export function sleep(milliseconds: number) {
 /**
  * 加权平滑轮询(负载均衡)
  */
-export function loadBalance(data: BalanceData[]) {
+export function loadBalance(data: BALANCE_TYPE[]) {
   let current: any;
   let totalWeught = 0;
   for (let i = 0; i < data.length; i++) {
