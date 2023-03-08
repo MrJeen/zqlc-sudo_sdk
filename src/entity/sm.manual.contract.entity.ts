@@ -5,7 +5,7 @@ import { Column, Entity, Index } from 'typeorm';
  * 管理后台收到配置的挖矿系列表
  */
 @Entity('sm_manual_contracts')
-@Index(['chain_id', 'token_address'], { unique: true })
+@Index(['chain_id', 'token_address'])
 export class SmManualContractEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
