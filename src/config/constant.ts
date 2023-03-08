@@ -93,3 +93,40 @@ export const CURVE_EXPONENTIAL_ADDRESS =
 
 // 平台手续费比例
 export const PLATFORM_FEE = 0.1;
+
+export type NETWORK_TYPE = {
+  chain_id: number;
+  swap_address: string;
+  per_block_time: number; // 单位:s
+};
+
+export const BSC_NETWORK: NETWORK_TYPE = {
+  chain_id: 56,
+  swap_address:
+    process.env.BSC_SWAP_MINING_ADDRESS ||
+    '0x86c37A2406e2fC4FD570c3acb0af206c85ee3556',
+  per_block_time: 3, // 单位:s
+};
+
+/**
+ * 事件同步间隔区块数量
+ */
+export const EVENT_BLOCK_INCR: Record<number, number> = {};
+EVENT_BLOCK_INCR[BSC_NETWORK.chain_id] = 10;
+
+/**
+ * 获取网络
+ * @param chainId
+ * @returns
+ */
+export function getNetwork(chainId: number): NETWORK_TYPE {
+  let network: NETWORK_TYPE = null;
+  switch (chainId) {
+    case BSC_NETWORK.chain_id:
+      network = BSC_NETWORK;
+      break;
+    default:
+      break;
+  }
+  return network;
+}
