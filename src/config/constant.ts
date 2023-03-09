@@ -21,7 +21,10 @@ export type NETWORK_TYPE = {
   name: string;
   chainId: number;
   transferIncr: number;
+  // 池子合约
   swap_address: string;
+  // 挖矿代币
+  swap_coin: string;
   per_block_time: number;
   node: BALANCE_TYPE[];
 };
@@ -33,6 +36,7 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   swap_address:
     process.env.BSC_SWAP_MINING_ADDRESS ||
     '0x86c37A2406e2fC4FD570c3acb0af206c85ee3556',
+  swap_coin: '0xA8befE3A797Faf16700827877F9bE9663cC01Ce9',
   per_block_time: 3, // 单位:s
   node: [
     {
