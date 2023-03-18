@@ -6,6 +6,12 @@ export class BannerEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id;
 
+  @Column('varchar', {
+    default: '',
+    comment: '名称',
+  })
+  title;
+
   @Column('smallint', {
     default: 0,
     comment: '状态（0：待发布，1：未生效，2：已上架， 3：已下架）',
