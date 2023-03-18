@@ -15,4 +15,5 @@ export * from './sm.manual.contract.entity';
 export * from './sm.order.entity';
 export * from './sm.withdraw.entity';
 export * from './mq.push.error.entity';
+export * from './banner.entity';
 export * from './openmeta';
