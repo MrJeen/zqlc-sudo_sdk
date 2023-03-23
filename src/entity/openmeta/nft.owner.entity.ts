@@ -27,12 +27,8 @@ export class NftOwnerEntity extends OpenMetaBaseEntity {
   @ManyToOne(() => NftEntity)
   @JoinColumn([
     {
-      name: 'chain_id',
-      referencedColumnName: 'chain_id',
-    },
-    {
-      name: 'contract_address',
-      referencedColumnName: 'contract_address',
+      name: 'collection_id',
+      referencedColumnName: 'collection_id',
     },
     {
       name: 'token_id',
