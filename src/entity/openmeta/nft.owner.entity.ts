@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { CollectionEntity } from './collection.entity';
-import { NftEntity } from './nft.entity';
 import { OpenMetaBaseEntity } from '../base.entity';
+import { NftEntity } from './nft.entity';
 
 @Entity('nft_owners')
 export class NftOwnerEntity extends OpenMetaBaseEntity {
@@ -21,14 +21,18 @@ export class NftOwnerEntity extends OpenMetaBaseEntity {
   token_id: string;
 
   @ManyToOne(() => CollectionEntity)
-  @JoinColumn({ name: 'collection_id', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'collection_id' })
   collection: CollectionEntity;
 
   @ManyToOne(() => NftEntity)
   @JoinColumn([
     {
-      name: 'collection_id',
-      referencedColumnName: 'collection_id',
+      name: 'chain_id',
+      referencedColumnName: 'chain_id',
+    },
+    {
+      name: 'contract_address',
+      referencedColumnName: 'contract_address',
     },
     {
       name: 'token_id',

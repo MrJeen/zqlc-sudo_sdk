@@ -50,9 +50,12 @@ export class CollectionEntity extends OpenMetaBaseEntity {
   @Column({ type: 'json' })
   rarity;
 
-  @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.collection)
+  @OneToMany(
+    () => NftOwnerEntity,
+    (owners: NftOwnerEntity) => owners.collection,
+  )
   owners: NftOwnerEntity[];
 
-  @OneToMany(() => NftEntity, (nft: NftEntity) => nft.collection)
+  @OneToMany(() => NftEntity, (nfts: NftEntity) => nfts.collection)
   nfts: NftEntity[];
 }

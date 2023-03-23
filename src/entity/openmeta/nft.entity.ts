@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { CollectionEntity } from './collection.entity';
-import { NftOwnerEntity } from './nft.owner.entity';
 import { OpenMetaBaseEntity } from '../base.entity';
+import { NftOwnerEntity } from './nft.owner.entity';
 
 @Entity('nfts')
 export class NftEntity extends OpenMetaBaseEntity {
@@ -33,7 +33,7 @@ export class NftEntity extends OpenMetaBaseEntity {
   metadata;
 
   @ManyToOne(() => CollectionEntity)
-  @JoinColumn({ name: 'collection_id' })
+  @JoinColumn({ name: 'collection_id', referencedColumnName: 'id' })
   collection: CollectionEntity;
 
   @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.nft)
