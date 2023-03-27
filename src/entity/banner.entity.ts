@@ -59,6 +59,30 @@ export class BannerEntity extends BaseEntity {
     comment: '中文图片链接',
   })
   link_zh;
+
+  @Column('varchar', {
+    default: '',
+    comment: 'h5英文图片',
+  })
+  h5_img_en;
+
+  @Column('varchar', {
+    default: '',
+    comment: 'h5英文图片链接',
+  })
+  h5_link_en;
+
+  @Column('varchar', {
+    default: '',
+    comment: 'h5中文图片',
+  })
+  h5_img_zh;
+
+  @Column('varchar', {
+    default: '',
+    comment: 'h5中文图片链接',
+  })
+  h5_link_zh;
 }
 
 export enum BANNER_STATUS {
