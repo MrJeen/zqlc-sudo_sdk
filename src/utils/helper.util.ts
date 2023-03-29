@@ -1,3 +1,4 @@
+import { createHash } from 'crypto';
 import { BALANCE_TYPE } from '../config/constant';
 
 /**
@@ -61,4 +62,13 @@ export function loadBalance(data: BALANCE_TYPE[]) {
 export function toNumber(target: any) {
   const result = Number(target);
   return isNaN(result) ? 0 : result;
+}
+
+/**
+ * md5
+ * @param data
+ * @returns
+ */
+export function md5(data: string) {
+  return createHash('md5').update(data).digest('hex');
 }
