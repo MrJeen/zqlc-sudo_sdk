@@ -1,5 +1,7 @@
 import { createHash } from 'crypto';
 import { BALANCE_TYPE } from '../config/constant';
+import { Logger } from './logger.util';
+import { getOssOmBase64Client } from './oss.util';
 
 /**
  * pm2 0实例
@@ -71,4 +73,26 @@ export function toNumber(target: any) {
  */
 export function md5(data: string) {
   return createHash('md5').update(data).digest('hex');
+}
+
+// 获取阿里云OSS存储的图片内容
+export async function transformNftImg(url: string) {
+  try {
+    const host = `http://${process.env.OSS_BUCKET}.${process.env.OSS_REGION}.aliyuncs.com/`;
+
+    if (url.startsWith(host)) {
+      const name = url.replace(host, '');
+      const client = getOssOmBase64Client();
+      const result = await client.get(name);
+      url = Buffer.from(result.content).toString();
+    }
+  } catch (error) {
+    Logger.error({
+      title: 'transformNftImg',
+      data: url,
+      error: error + '',
+    });
+  }
+
+  return url;
 }

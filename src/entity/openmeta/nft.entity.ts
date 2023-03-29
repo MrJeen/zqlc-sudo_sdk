@@ -1,7 +1,15 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import {
+  AfterLoad,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { CollectionEntity } from './collection.entity';
 import { OpenMetaBaseEntity } from '../base.entity';
 import { NftOwnerEntity } from './nft.owner.entity';
+import { transformNftImg } from '../../utils/helper.util';
 
 @Entity('nfts')
 export class NftEntity extends OpenMetaBaseEntity {
@@ -38,4 +46,9 @@ export class NftEntity extends OpenMetaBaseEntity {
 
   @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.nft)
   owners: NftOwnerEntity[];
+
+  @AfterLoad()
+  async checkOssUrl() {
+    this.img_url = await transformNftImg(this.img_url);
+  }
 }
