@@ -27,6 +27,7 @@ export type NETWORK_TYPE = {
   swap_coin: string;
   per_block_time: number;
   node?: BALANCE_TYPE[];
+  current_node?: string;
 };
 
 export const BSC_NETWORK: NETWORK_TYPE = {

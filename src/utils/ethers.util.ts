@@ -10,16 +10,29 @@ import { selectNetwork } from '../config/constant';
  */
 export const getNode = (chainId: number): string => {
   const network = selectNetwork(chainId);
-  return loadBalance(network.node);
+  network.current_node = loadBalance(network.node);
+  return network.current_node;
 };
 
 /**
  * 获取provider
  * @param chainId
+ * @param timeout 单位秒
  */
-export function getJsonRpcProvider(chainId: number): JsonRpcProvider {
+export function getJsonRpcProvider(
+  chainId: number,
+  timeout = -1,
+): JsonRpcProvider {
   const node = getNode(chainId);
-  const provider = new ethers.providers.JsonRpcProvider(node);
+  let provider = undefined;
+  if (timeout !== -1) {
+    provider = new ethers.providers.JsonRpcProvider({
+      url: node,
+      timeout: timeout * 1000,
+    });
+  } else {
+    provider = new ethers.providers.JsonRpcProvider(node);
+  }
   provider['node'] = node;
   return provider;
 }
