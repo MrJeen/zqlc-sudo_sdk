@@ -9,19 +9,19 @@ import { BaseEntity } from './base.entity';
 @Index(['chain_id', 'token_address'])
 export class PoolPriceEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
-  chain_id;
+  chain_id: number;
 
   @Column('varchar', { default: '', comment: '系列地址' })
-  token_address;
+  token_address: string;
 
   @Column('varchar', { default: '', comment: '池子地址' })
-  pool_address;
+  pool_address: string;
 
   @Column('int2', {
     default: 0,
     comment: '池子类型（0: 买池，1: 卖池，2:流动池）',
   })
-  pool_type;
+  pool_type: number;
 
   @Column('decimal', {
     precision: 56,
@@ -29,7 +29,7 @@ export class PoolPriceEntity extends BaseEntity {
     default: 0,
     comment: '当前价',
   })
-  price;
+  price: number;
 
   @Column('decimal', {
     precision: 56,
@@ -37,7 +37,7 @@ export class PoolPriceEntity extends BaseEntity {
     default: 0,
     comment: '用户购买价（即池子售价）',
   })
-  buy_price;
+  buy_price: number;
 
   @Column('decimal', {
     precision: 56,
@@ -45,5 +45,5 @@ export class PoolPriceEntity extends BaseEntity {
     default: 0,
     comment: '用户售价（即池子购买价）',
   })
-  sell_price;
+  sell_price: number;
 }

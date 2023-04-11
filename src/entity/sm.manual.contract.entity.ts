@@ -8,17 +8,17 @@ import { Column, Entity, Index } from 'typeorm';
 @Index(['chain_id', 'token_address'])
 export class SmManualContractEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
-  chain_id;
+  chain_id: number;
 
   @Column('varchar', { default: '', comment: '系列地址' })
-  token_address;
+  token_address: string;
 
   @Column('smallint', { default: 0, comment: '权重（满值100）' })
-  weight;
+  weight: number;
 
   @Column('timestamp', { default: () => 'NOW()', comment: '挖矿开始时间' })
-  start_time;
+  start_time: Date;
 
   @Column('timestamp', { default: () => 'NOW()', comment: '挖矿结束时间' })
-  end_time;
+  end_time: Date;
 }

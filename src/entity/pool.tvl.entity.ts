@@ -9,22 +9,22 @@ import { BaseEntity } from './base.entity';
 @Index(['chain_id', 'token_address'])
 export class PoolTvlEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
-  chain_id;
+  chain_id: number;
 
   @Column('varchar', { default: '', comment: '系列地址' })
-  token_address;
+  token_address: string;
 
   @Column('varchar', { default: '', comment: '池子地址' })
-  pool_address;
+  pool_address: string;
 
   @Column('int2', {
     default: 0,
     comment: '池子类型（0: 买池，1: 卖池，2:流动池）',
   })
-  pool_type;
+  pool_type: number;
 
   @Column('varchar', { default: '', comment: '日期' })
-  date;
+  date: string;
 
   @Column('decimal', {
     precision: 56,
@@ -32,5 +32,5 @@ export class PoolTvlEntity extends BaseEntity {
     default: 0,
     comment: '余额',
   })
-  tvl;
+  tvl: number;
 }

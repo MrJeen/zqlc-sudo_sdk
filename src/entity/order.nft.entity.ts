@@ -7,13 +7,13 @@ import { OrderEntity } from './order.entity';
 @Index(['token_address'])
 export class OrderNftEntity extends BaseEntity {
   @Column('bigint', { default: 0, comment: '订单ID' })
-  order_id;
+  order_id: number;
 
   @Column('varchar', { default: '', comment: '系列地址' })
-  token_address;
+  token_address: string;
 
   @Column('varchar', { default: '', comment: 'nft id' })
-  token_id;
+  token_id: string;
 
   @ManyToOne(() => OrderEntity, { createForeignKeyConstraints: false })
   @JoinColumn({ name: 'order_id' })
