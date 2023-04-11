@@ -131,7 +131,7 @@ export class PoolEntity extends BaseEntity {
   @OneToMany(() => PoolNftEntity, (nft: PoolNftEntity) => nft.pool)
   nfts: PoolNftEntity[];
 
-  @ManyToOne(() => ContractEntity)
+  @ManyToOne(() => ContractEntity, { createForeignKeyConstraints: false })
   @JoinColumn([
     {
       name: 'chain_id',

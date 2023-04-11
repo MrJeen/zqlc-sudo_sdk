@@ -15,7 +15,7 @@ export class PoolNftEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: 'nft id' })
   token_id;
 
-  @ManyToOne(() => PoolEntity)
+  @ManyToOne(() => PoolEntity, { createForeignKeyConstraints: false })
   @JoinColumn({ name: 'pool_id' })
   pool: PoolEntity;
 }

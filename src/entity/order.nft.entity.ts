@@ -15,7 +15,7 @@ export class OrderNftEntity extends BaseEntity {
   @Column('varchar', { default: '', comment: 'nft id' })
   token_id;
 
-  @ManyToOne(() => OrderEntity)
+  @ManyToOne(() => OrderEntity, { createForeignKeyConstraints: false })
   @JoinColumn({ name: 'order_id' })
   order: OrderEntity;
 }

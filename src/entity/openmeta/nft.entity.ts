@@ -40,7 +40,7 @@ export class NftEntity extends OpenMetaBaseEntity {
   @Column({ type: 'json' })
   metadata;
 
-  @ManyToOne(() => CollectionEntity)
+  @ManyToOne(() => CollectionEntity, { createForeignKeyConstraints: false })
   @JoinColumn({ name: 'collection_id', referencedColumnName: 'id' })
   collection: CollectionEntity;
 
