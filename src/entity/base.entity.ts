@@ -62,7 +62,7 @@ export enum ORDER_TYPE {
 export const DATABASE_OPENMETA_NAME = 'openmeta';
 
 export class BaseEntity {
-  @PrimaryGeneratedColumn({ comment: 'ID' })
+  @PrimaryGeneratedColumn({ comment: 'ID', type: 'bigint' })
   id: number;
 
   @CreateDateColumn({ comment: '创建时间' })

@@ -1,3 +1,5 @@
+import { toNumber } from '../utils/helper.util';
+
 // 线性曲线地址
 export const CURVE_LINEAR_ADDRESS =
   process.env.CURVE_LINEAR_ADDRESS ??
@@ -41,7 +43,28 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   per_block_time: 3, // 单位:s
 };
 
-export const networks = [BSC_NETWORK];
+const networks = [];
+
+export function getNetworks(): NETWORK_TYPE[] {
+  if (networks.length) {
+    return networks;
+  }
+  const supportChains = process.env.SUPPORT_CHAINS.split(',').filter(
+    (item) => item != '',
+  );
+  if (supportChains.length) {
+    for (const chainId of supportChains) {
+      switch (toNumber(chainId)) {
+        case BSC_NETWORK.chainId:
+          networks.push(BSC_NETWORK);
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  return networks;
+}
 
 /**
  * 获取网络
@@ -49,13 +72,14 @@ export const networks = [BSC_NETWORK];
  * @returns
  */
 export function selectNetwork(chainId: number): NETWORK_TYPE {
+  const networks = getNetworks();
   const network = networks.find((network) => network.chainId == chainId);
   if (!network) {
     throw Error(`network #${chainId} not found`);
   }
-  if (!network.node) {
+  if (!network.node || !network.node.length) {
     // 节点初始化
-    network.node = JSON.parse(process.env[network.name + '_NODE'] ?? '{}');
+    network.node = JSON.parse(process.env[network.name + '_NODE'] ?? '[]');
   }
   return network;
 }
