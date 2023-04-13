@@ -9,6 +9,9 @@ export class PoolNftEntity extends BaseEntity {
   @Column('bigint', { default: 0, comment: '池子ID' })
   pool_id: number;
 
+  @Column('int', { default: 0, comment: '区块链id' })
+  chain_id: number;
+
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address: string;
 

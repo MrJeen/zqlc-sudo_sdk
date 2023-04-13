@@ -23,7 +23,7 @@
     "log4js": "^6.7.0",
     "moment": "^2.29.4",
     "stacktrace-js": "^2.0.2",
-    "typeorm": "^0.3.10"
+    "typeorm": "^0.3.14"
   },
   "devDependencies": {
     "@types/ali-oss": "^6.16.7",
