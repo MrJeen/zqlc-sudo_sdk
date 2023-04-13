@@ -9,6 +9,9 @@ export class OrderNftEntity extends BaseEntity {
   @Column('bigint', { default: 0, comment: '订单ID' })
   order_id: number;
 
+  @Column('int', { default: 0, comment: '区块链id' })
+  chain_id: number;
+
   @Column('varchar', { default: '', comment: '系列地址' })
   token_address: string;
 
