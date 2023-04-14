@@ -3,8 +3,8 @@ import { Column, Entity, Index, OneToMany } from 'typeorm';
 import { OrderNftEntity } from './order.nft.entity';
 
 @Entity('orders')
-@Index(['pool_address'])
-@Index(['token_address'])
+@Index(['chain_id', 'pool_address'])
+@Index(['chain_id', 'token_address'])
 @Index(['chain_id', 'transaction_hash', 'log_index'], { unique: true })
 export class OrderEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
