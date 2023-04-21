@@ -36,8 +36,8 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   name: 'BSC',
   chainId: 56,
   transferIncr: 8,
-  swap_address: process.env.BSC_SWAP_MINING_ADDRESS,
-  swap_coin: process.env.BSC_SWAP_COIN_ADDRESS,
+  swap_address: process.env.BSC_SWAP_MINING_ADDRESS ?? '',
+  swap_coin: process.env.BSC_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 3, // 单位:s
 };
 
@@ -45,8 +45,8 @@ export const GOERLI_NETWORK: NETWORK_TYPE = {
   name: 'GOERLI',
   chainId: 5,
   transferIncr: 10,
-  swap_address: process.env.GOERLI_SWAP_MINING_ADDRESS,
-  swap_coin: process.env.GOERLI_SWAP_COIN_ADDRESS,
+  swap_address: process.env.GOERLI_SWAP_MINING_ADDRESS ?? '',
+  swap_coin: process.env.GOERLI_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 12, // 单位:s
 };
 
