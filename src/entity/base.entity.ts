@@ -1,4 +1,4 @@
-import { BSC_NETWORK, GOERLI_NETWORK } from 'config';
+import { BSC_NETWORK, GOERLI_NETWORK } from '../config/constant';
 import {
   CreateDateColumn,
   DeleteDateColumn,
