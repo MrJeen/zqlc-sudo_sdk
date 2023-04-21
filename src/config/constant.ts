@@ -36,11 +36,18 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   name: 'BSC',
   chainId: 56,
   transferIncr: 8,
-  swap_address:
-    process.env.BSC_SWAP_MINING_ADDRESS ||
-    '0x86c37A2406e2fC4FD570c3acb0af206c85ee3556',
-  swap_coin: '0xA8befE3A797Faf16700827877F9bE9663cC01Ce9',
+  swap_address: process.env.BSC_SWAP_MINING_ADDRESS,
+  swap_coin: process.env.BSC_SWAP_COIN_ADDRESS,
   per_block_time: 3, // 单位:s
+};
+
+export const GOERLI_NETWORK: NETWORK_TYPE = {
+  name: 'GOERLI',
+  chainId: 5,
+  transferIncr: 10,
+  swap_address: process.env.GOERLI_SWAP_MINING_ADDRESS,
+  swap_coin: process.env.GOERLI_SWAP_COIN_ADDRESS,
+  per_block_time: 12, // 单位:s
 };
 
 const networks = [];
@@ -57,6 +64,9 @@ export function getNetworks(): NETWORK_TYPE[] {
       switch (toNumber(chainId)) {
         case BSC_NETWORK.chainId:
           networks.push(BSC_NETWORK);
+          break;
+        case GOERLI_NETWORK.chainId:
+          networks.push(GOERLI_NETWORK);
           break;
         default:
           break;
