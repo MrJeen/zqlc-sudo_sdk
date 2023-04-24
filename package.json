@@ -1,6 +1,6 @@
 {
   "name": "@zqlc/sudo_sdk",
-  "version": "1.0.144",
+  "version": "1.0.145",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
