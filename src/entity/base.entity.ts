@@ -1,4 +1,3 @@
-import { BSC_NETWORK, GOERLI_NETWORK } from '../config/constant';
 import {
   CreateDateColumn,
   DeleteDateColumn,
@@ -15,11 +14,6 @@ export enum CONTRACT_STATUS {
   UPPER = 20,
   LOWER = 30,
   HIDDEN = 90,
-}
-
-export enum CHAIN {
-  BSC = BSC_NETWORK.chainId,
-  GOERLI = GOERLI_NETWORK.chainId,
 }
 
 export enum CONTRACT_TYPE {
