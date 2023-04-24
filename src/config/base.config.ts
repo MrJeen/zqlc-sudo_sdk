@@ -1,4 +1,8 @@
 import path from 'path';
+import dotenv from 'dotenv';
+
+// 加载 .env 文件中的环境变量
+dotenv.config();
 
 const baseLogPath = path.join(process.cwd(), 'logs');
 export default () => ({
@@ -45,11 +49,11 @@ export default () => ({
     categories: {
       default: {
         appenders: ['console', 'access'],
-        level: 'DEBUG', // 设置记录日志的最低等级
+        level: process.env.LOGGER_LEVEL ?? 'debug', // 设置记录日志的最低等级
       },
       error: {
         appenders: ['console', 'error'],
-        level: 'ERROR', // 设置记录日志的最低等级
+        level: process.env.LOGGER_ERROR_LEVEL ?? 'error', // 设置记录日志的最低等级
       },
     },
     // 使用pm2来管理项目时打开

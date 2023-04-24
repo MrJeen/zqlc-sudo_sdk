@@ -9,7 +9,6 @@ import _ from 'lodash';
 const config = configuration();
 Log4js.configure(_.get(config, 'logger'));
 const logger = Log4js.getLogger();
-const errorLogger = Log4js.getLogger('error');
 
 export class Logger {
   // 日志追踪，可以追溯到哪个文件、第几行第几列
@@ -28,41 +27,33 @@ export class Logger {
     return `${appName}:${env}:${basename}:${functionName}(line: ${lineNumber}, column: ${columnNumber}):`;
   }
 
-  static checkLevel() {
-    const level = process.env.LOGGER_LEVEL;
-    if (level) {
-      logger.level = level;
-    }
-    return logger;
-  }
-
   static log(...args) {
-    this.checkLevel().log(this.getStackTrace(), JSON.stringify(args));
+    logger.log(this.getStackTrace(), JSON.stringify(args));
   }
 
   static debug(...args) {
-    this.checkLevel().debug(this.getStackTrace(), JSON.stringify(args));
+    logger.debug(this.getStackTrace(), JSON.stringify(args));
   }
 
   static info(...args) {
-    this.checkLevel().info(this.getStackTrace(), JSON.stringify(args));
+    logger.info(this.getStackTrace(), JSON.stringify(args));
   }
 
   static warn(...args) {
-    this.checkLevel().warn(this.getStackTrace(), JSON.stringify(args));
+    logger.warn(this.getStackTrace(), JSON.stringify(args));
   }
 
   static error(...args) {
     const msg = JSON.stringify(args);
     const trace = this.getStackTrace();
-    errorLogger.error(trace, msg);
+    logger.error(trace, msg);
     sendMessage(trace + msg);
   }
 
   static fatal(...args) {
     const msg = JSON.stringify(args);
     const trace = this.getStackTrace();
-    errorLogger.fatal(trace, msg);
+    logger.fatal(trace, msg);
     sendMessage(trace + msg);
   }
 }
