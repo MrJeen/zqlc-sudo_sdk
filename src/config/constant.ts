@@ -1,4 +1,8 @@
 import { toNumber } from '../utils/helper.util';
+import dotenv from 'dotenv';
+
+// 加载 .env 文件中的环境变量
+dotenv.config();
 
 // 线性曲线地址
 export const CURVE_LINEAR_ADDRESS =
@@ -50,31 +54,36 @@ export const GOERLI_NETWORK: NETWORK_TYPE = {
   per_block_time: 12, // 单位:s
 };
 
-const networks = [];
+export const NETWORKS: NETWORK_TYPE[] = [];
 
-export function getNetworks(): NETWORK_TYPE[] {
-  if (networks.length) {
-    return networks;
-  }
-  const supportChains = process.env.SUPPORT_CHAINS.split(',').filter(
-    (item) => item != '',
-  );
-  if (supportChains.length) {
-    for (const chainId of supportChains) {
-      switch (toNumber(chainId)) {
+export const CHAINS = {};
+
+function initNetworks(chainIds: number[]) {
+  if (chainIds.length) {
+    for (const chainId of chainIds) {
+      switch (chainId) {
         case BSC_NETWORK.chainId:
-          networks.push(BSC_NETWORK);
+          NETWORKS.push(BSC_NETWORK);
+          CHAINS[chainId] = BSC_NETWORK.name;
+          CHAINS[BSC_NETWORK.name] = chainId;
           break;
         case GOERLI_NETWORK.chainId:
-          networks.push(GOERLI_NETWORK);
+          NETWORKS.push(GOERLI_NETWORK);
+          CHAINS[chainId] = GOERLI_NETWORK.name;
+          CHAINS[GOERLI_NETWORK.name] = chainId;
           break;
         default:
           break;
       }
     }
   }
-  return networks;
 }
+
+// 初始化chain配置
+const supportChains = process.env.SUPPORT_CHAINS.split(',')
+  .filter((item: string) => item != '')
+  .map((item: string) => toNumber(item));
+initNetworks(supportChains);
 
 /**
  * 获取网络
@@ -82,8 +91,7 @@ export function getNetworks(): NETWORK_TYPE[] {
  * @returns
  */
 export function selectNetwork(chainId: number): NETWORK_TYPE {
-  const networks = getNetworks();
-  const network = networks.find((network) => network.chainId == chainId);
+  const network = NETWORKS.find((network) => network.chainId == chainId);
   if (!network) {
     throw Error(`network #${chainId} not found`);
   }
