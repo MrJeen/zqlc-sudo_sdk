@@ -56,15 +56,21 @@ export const GOERLI_NETWORK: NETWORK_TYPE = {
 
 export const NETWORKS: NETWORK_TYPE[] = [];
 
+export const CHAINS = {};
+
 function initNetworks(chainIds: number[]) {
   if (chainIds.length) {
     for (const chainId of chainIds) {
       switch (chainId) {
         case BSC_NETWORK.chainId:
           NETWORKS.push(BSC_NETWORK);
+          CHAINS[chainId] = BSC_NETWORK.name;
+          CHAINS[BSC_NETWORK.name] = chainId;
           break;
         case GOERLI_NETWORK.chainId:
           NETWORKS.push(GOERLI_NETWORK);
+          CHAINS[chainId] = GOERLI_NETWORK.name;
+          CHAINS[GOERLI_NETWORK.name] = chainId;
           break;
         default:
           break;
