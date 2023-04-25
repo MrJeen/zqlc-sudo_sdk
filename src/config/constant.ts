@@ -4,19 +4,6 @@ import dotenv from 'dotenv';
 // 加载 .env 文件中的环境变量
 dotenv.config();
 
-// 线性曲线地址
-export const CURVE_LINEAR_ADDRESS =
-  process.env.CURVE_LINEAR_ADDRESS ??
-  '0x62E83F7c4ED486F22def0e0614Fb8254df64cC17';
-
-// 指数曲线地址
-export const CURVE_EXPONENTIAL_ADDRESS =
-  process.env.CURVE_EXPONENTIAL_ADDRESS ??
-  '0xED895091191865930E99a67fBfaD5B7Bfb14a290';
-
-// 平台手续费比例
-export const PLATFORM_FEE = 0.1;
-
 export type BALANCE_TYPE = {
   target: string;
   weight: number;
@@ -27,6 +14,12 @@ export type NETWORK_TYPE = {
   name: string;
   chainId: number;
   transferIncr: number;
+  // 线性曲线地址
+  curve_linear_address: string;
+  // 指数曲线地址
+  curve_exponential_address: string;
+  // 平台手续费
+  platform_fee: number;
   // 池子合约
   swap_address: string;
   // 挖矿代币
@@ -40,6 +33,9 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   name: 'BSC',
   chainId: 56,
   transferIncr: 8,
+  curve_linear_address: process.env.BSC_CURVE_LINEAR_ADDRESS ?? '',
+  curve_exponential_address: process.env.BSC_CURVE_EXPONENTIAL_ADDRESS ?? '',
+  platform_fee: toNumber(process.env.BSC_PLATFORM_FEE),
   swap_address: process.env.BSC_SWAP_MINING_ADDRESS ?? '',
   swap_coin: process.env.BSC_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 3, // 单位:s
@@ -49,6 +45,9 @@ export const GOERLI_NETWORK: NETWORK_TYPE = {
   name: 'GOERLI',
   chainId: 5,
   transferIncr: 10,
+  curve_linear_address: process.env.GOERLI_CURVE_LINEAR_ADDRESS ?? '',
+  curve_exponential_address: process.env.GOERLI_CURVE_EXPONENTIAL_ADDRESS ?? '',
+  platform_fee: toNumber(process.env.GOERLI_PLATFORM_FEE),
   swap_address: process.env.GOERLI_SWAP_MINING_ADDRESS ?? '',
   swap_coin: process.env.GOERLI_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 12, // 单位:s
