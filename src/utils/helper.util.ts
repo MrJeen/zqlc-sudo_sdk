@@ -1,7 +1,7 @@
 import { createHash } from 'crypto';
 import { BALANCE_TYPE } from '../config/constant';
 import { Logger } from './logger.util';
-import { getOssOmBase64Client } from './oss.util';
+import { OSS_OM_BASE64_CLIENT } from './oss.util';
 
 /**
  * pm2 0实例
@@ -82,8 +82,7 @@ export async function transformNftImg(url: string) {
 
     if (url.startsWith(host)) {
       const name = url.replace(host, '');
-      const client = getOssOmBase64Client();
-      const result = await client.get(name);
+      const result = await OSS_OM_BASE64_CLIENT.get(name);
       url = Buffer.from(result.content).toString();
     }
   } catch (error) {
