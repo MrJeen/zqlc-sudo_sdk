@@ -53,6 +53,19 @@ export const GOERLI_NETWORK: NETWORK_TYPE = {
   per_block_time: 12, // 单位:s
 };
 
+export const SEPOLIA_NETWORK: NETWORK_TYPE = {
+  name: 'SEPOLIA',
+  chainId: 11155111,
+  transferIncr: 5,
+  curve_linear_address: process.env.SEPOLIA_CURVE_LINEAR_ADDRESS ?? '',
+  curve_exponential_address:
+    process.env.SEPOLIA_CURVE_EXPONENTIAL_ADDRESS ?? '',
+  platform_fee: toNumber(process.env.SEPOLIA_PLATFORM_FEE),
+  swap_address: process.env.SEPOLIA_SWAP_MINING_ADDRESS ?? '',
+  swap_coin: process.env.SEPOLIA_SWAP_COIN_ADDRESS ?? '',
+  per_block_time: 12, // 单位:s
+};
+
 export const NETWORKS: NETWORK_TYPE[] = [];
 
 export const CHAINS = {};
@@ -70,6 +83,11 @@ function initNetworks(chainIds: number[]) {
           NETWORKS.push(GOERLI_NETWORK);
           CHAINS[chainId] = GOERLI_NETWORK.name;
           CHAINS[GOERLI_NETWORK.name] = chainId;
+          break;
+        case SEPOLIA_NETWORK.chainId:
+          NETWORKS.push(SEPOLIA_NETWORK);
+          CHAINS[chainId] = SEPOLIA_NETWORK.name;
+          CHAINS[SEPOLIA_NETWORK.name] = chainId;
           break;
         default:
           break;
