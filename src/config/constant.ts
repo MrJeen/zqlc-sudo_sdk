@@ -13,6 +13,10 @@ export type BALANCE_TYPE = {
 export type NETWORK_TYPE = {
   name: string;
   chainId: number;
+  // 代币链
+  coin_chainId: number;
+  // 代币地址
+  coin_address: string;
   transferIncr: number;
   // 线性曲线地址
   curve_linear_address: string;
@@ -32,6 +36,8 @@ export type NETWORK_TYPE = {
 export const BSC_NETWORK: NETWORK_TYPE = {
   name: 'BSC',
   chainId: 56,
+  coin_chainId: 56,
+  coin_address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
   transferIncr: 8,
   curve_linear_address: process.env.BSC_CURVE_LINEAR_ADDRESS ?? '',
   curve_exponential_address: process.env.BSC_CURVE_EXPONENTIAL_ADDRESS ?? '',
@@ -44,6 +50,8 @@ export const BSC_NETWORK: NETWORK_TYPE = {
 export const GOERLI_NETWORK: NETWORK_TYPE = {
   name: 'GOERLI',
   chainId: 5,
+  coin_chainId: 1,
+  coin_address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
   transferIncr: 10,
   curve_linear_address: process.env.GOERLI_CURVE_LINEAR_ADDRESS ?? '',
   curve_exponential_address: process.env.GOERLI_CURVE_EXPONENTIAL_ADDRESS ?? '',
@@ -56,6 +64,8 @@ export const GOERLI_NETWORK: NETWORK_TYPE = {
 export const SEPOLIA_NETWORK: NETWORK_TYPE = {
   name: 'SEPOLIA',
   chainId: 11155111,
+  coin_chainId: 1,
+  coin_address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
   transferIncr: 5,
   curve_linear_address: process.env.SEPOLIA_CURVE_LINEAR_ADDRESS ?? '',
   curve_exponential_address:
