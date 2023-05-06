@@ -89,7 +89,7 @@ export async function transformNftImg(url: string) {
     Logger.error({
       title: 'transformNftImg',
       data: url,
-      error: error + '',
+      error: error,
     });
   }
 
