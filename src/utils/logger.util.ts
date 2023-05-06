@@ -9,6 +9,13 @@ import _ from 'lodash';
 const config = configuration();
 Log4js.configure(_.get(config, 'logger'));
 const logger = Log4js.getLogger();
+const errorLogger = Log4js.getLogger('error');
+
+export interface Message {
+  title: string;
+  data: any;
+  error?: any;
+}
 
 export class Logger {
   // 日志追踪，可以追溯到哪个文件、第几行第几列
@@ -27,33 +34,58 @@ export class Logger {
     return `${appName}:${env}:${basename}:${functionName}(line: ${lineNumber}, column: ${columnNumber}):`;
   }
 
-  static log(...args) {
-    logger.log(this.getStackTrace(), JSON.stringify(args));
+  static getErrorStack(error: any) {
+    if (error instanceof Error) {
+      return error.stack.split('\n');
+    }
+    return error + '';
   }
 
-  static debug(...args) {
-    logger.debug(this.getStackTrace(), JSON.stringify(args));
+  static log(message: Message) {
+    if (message.error) {
+      message.error = this.getErrorStack(message.error);
+    }
+    logger.log(this.getStackTrace(), JSON.stringify(message, null, 2));
   }
 
-  static info(...args) {
-    logger.info(this.getStackTrace(), JSON.stringify(args));
+  static debug(message: Message) {
+    if (message.error) {
+      message.error = this.getErrorStack(message.error);
+    }
+    logger.debug(this.getStackTrace(), JSON.stringify(message, null, 2));
   }
 
-  static warn(...args) {
-    logger.warn(this.getStackTrace(), JSON.stringify(args));
+  static info(message: Message) {
+    if (message.error) {
+      message.error = this.getErrorStack(message.error);
+    }
+    logger.info(this.getStackTrace(), JSON.stringify(message, null, 2));
   }
 
-  static error(...args) {
-    const msg = JSON.stringify(args);
+  static warn(message: Message) {
+    if (message.error) {
+      message.error = this.getErrorStack(message.error);
+    }
+    logger.warn(this.getStackTrace(), JSON.stringify(message, null, 2));
+  }
+
+  static error(message: Message) {
+    if (message.error) {
+      message.error = this.getErrorStack(message.error);
+    }
+    const msg = JSON.stringify(message, null, 2);
     const trace = this.getStackTrace();
-    logger.error(trace, msg);
+    errorLogger.error(trace, msg);
     sendMessage(trace + msg);
   }
 
-  static fatal(...args) {
-    const msg = JSON.stringify(args);
+  static fatal(message: Message) {
+    if (message.error) {
+      message.error = this.getErrorStack(message.error);
+    }
+    const msg = JSON.stringify(message, null, 2);
     const trace = this.getStackTrace();
-    logger.fatal(trace, msg);
+    errorLogger.fatal(trace, msg);
     sendMessage(trace + msg);
   }
 }

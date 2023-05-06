@@ -28,7 +28,12 @@ export default () => ({
         },
         //日志文件按日期切割
         pattern: 'yyyyMMdd',
-        numBackups: 120,
+        // 每个日志文件最大300M
+        maxLogSize: 314572800,
+        // 最多保留10个文件
+        numBackups: 10,
+        // 开启日志压缩
+        compress: true,
         keepFileExt: true,
       },
       error: {
@@ -42,7 +47,12 @@ export default () => ({
         },
         //日志文件按日期切割
         pattern: 'yyyyMMdd',
-        numBackups: 120,
+        // 每个日志文件最大300M
+        maxLogSize: 314572800,
+        // 最多保留10个文件
+        numBackups: 10,
+        // 开启日志压缩
+        compress: true,
         keepFileExt: true,
       },
     },
