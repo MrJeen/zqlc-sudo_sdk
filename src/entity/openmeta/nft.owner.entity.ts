@@ -21,14 +21,27 @@ export class NftOwnerEntity extends OpenMetaBaseEntity {
   token_id: string;
 
   @ManyToOne(() => CollectionEntity, { createForeignKeyConstraints: false })
-  @JoinColumn({ name: 'collection_id' })
+  @JoinColumn([
+    {
+      name: 'chain_id',
+      referencedColumnName: 'chain_id',
+    },
+    {
+      name: 'contract_address',
+      referencedColumnName: 'contract_address',
+    },
+  ])
   collection: CollectionEntity;
 
   @ManyToOne(() => NftEntity, { createForeignKeyConstraints: false })
   @JoinColumn([
     {
-      name: 'collection_id',
-      referencedColumnName: 'collection_id',
+      name: 'chain_id',
+      referencedColumnName: 'chain_id',
+    },
+    {
+      name: 'contract_address',
+      referencedColumnName: 'contract_address',
     },
     {
       name: 'token_id',
