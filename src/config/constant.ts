@@ -28,6 +28,8 @@ export type NETWORK_TYPE = {
   swap_address: string;
   // 挖矿代币
   swap_coin: string;
+  // 资金账户以及池子预算控制合约
+  asset_manager_address: string;
   per_block_time: number;
   node?: BALANCE_TYPE[];
   current_node?: string;
@@ -37,43 +39,46 @@ export const BSC_NETWORK: NETWORK_TYPE = {
   name: 'BSC',
   chainId: 56,
   coin_chainId: 56,
-  coin_address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+  coin_address: process.env.BSC_COIN_ADDRESS ?? '',
   transferIncr: 8,
   curve_linear_address: process.env.BSC_CURVE_LINEAR_ADDRESS ?? '',
   curve_exponential_address: process.env.BSC_CURVE_EXPONENTIAL_ADDRESS ?? '',
-  platform_fee: toNumber(process.env.BSC_PLATFORM_FEE),
+  platform_fee: eval(process.env.BSC_PLATFORM_FEE),
   swap_address: process.env.BSC_SWAP_MINING_ADDRESS ?? '',
   swap_coin: process.env.BSC_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 3, // 单位:s
+  asset_manager_address: process.env.BSC_ASSET_MANAGER_ADDRESS ?? '',
 };
 
 export const GOERLI_NETWORK: NETWORK_TYPE = {
   name: 'GOERLI',
   chainId: 5,
   coin_chainId: 1,
-  coin_address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+  coin_address: process.env.GOERLI_COIN_ADDRESS ?? '',
   transferIncr: 10,
   curve_linear_address: process.env.GOERLI_CURVE_LINEAR_ADDRESS ?? '',
   curve_exponential_address: process.env.GOERLI_CURVE_EXPONENTIAL_ADDRESS ?? '',
-  platform_fee: toNumber(process.env.GOERLI_PLATFORM_FEE),
+  platform_fee: eval(process.env.GOERLI_PLATFORM_FEE),
   swap_address: process.env.GOERLI_SWAP_MINING_ADDRESS ?? '',
   swap_coin: process.env.GOERLI_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 12, // 单位:s
+  asset_manager_address: process.env.GOERLI_ASSET_MANAGER_ADDRESS ?? '',
 };
 
 export const SEPOLIA_NETWORK: NETWORK_TYPE = {
   name: 'SEPOLIA',
   chainId: 11155111,
   coin_chainId: 1,
-  coin_address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+  coin_address: process.env.SEPOLIA_COIN_ADDRESS ?? '',
   transferIncr: 5,
   curve_linear_address: process.env.SEPOLIA_CURVE_LINEAR_ADDRESS ?? '',
   curve_exponential_address:
     process.env.SEPOLIA_CURVE_EXPONENTIAL_ADDRESS ?? '',
-  platform_fee: toNumber(process.env.SEPOLIA_PLATFORM_FEE),
+  platform_fee: eval(process.env.SEPOLIA_PLATFORM_FEE),
   swap_address: process.env.SEPOLIA_SWAP_MINING_ADDRESS ?? '',
   swap_coin: process.env.SEPOLIA_SWAP_COIN_ADDRESS ?? '',
   per_block_time: 12, // 单位:s
+  asset_manager_address: process.env.SEPOLIA_ASSET_MANAGER_ADDRESS ?? '',
 };
 
 export const NETWORKS: NETWORK_TYPE[] = [];

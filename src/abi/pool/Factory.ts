@@ -21,6 +21,11 @@ export default [
         name: '_protocolFeeMultiplier',
         type: 'uint256',
       },
+      {
+        internalType: 'address payable',
+        name: '_assetManager',
+        type: 'address',
+      },
     ],
     stateMutability: 'nonpayable',
     type: 'constructor',
@@ -111,13 +116,7 @@ export default [
       },
       {
         indexed: false,
-        internalType: 'address',
-        name: 'assetRecipient',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'enum Pair.PoolType',
+        internalType: 'enum IPair.PoolType',
         name: 'poolType',
         type: 'uint8',
       },
@@ -208,6 +207,19 @@ export default [
     type: 'event',
   },
   {
+    inputs: [],
+    name: 'assetManager',
+    outputs: [
+      {
+        internalType: 'address payable',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'address',
@@ -284,12 +296,7 @@ export default [
         type: 'address',
       },
       {
-        internalType: 'address payable',
-        name: '_assetRecipient',
-        type: 'address',
-      },
-      {
-        internalType: 'enum Pair.PoolType',
+        internalType: 'enum IPair.PoolType',
         name: '_poolType',
         type: 'uint8',
       },
@@ -302,6 +309,11 @@ export default [
         internalType: 'uint96',
         name: '_fee',
         type: 'uint96',
+      },
+      {
+        internalType: 'uint256',
+        name: '_amount',
+        type: 'uint256',
       },
       {
         internalType: 'uint128',

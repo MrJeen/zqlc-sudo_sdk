@@ -15,25 +15,6 @@ export default [
     inputs: [
       {
         indexed: false,
-        internalType: 'address',
-        name: 'oldRecipient',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'newRecipient',
-        type: 'address',
-      },
-    ],
-    name: 'AssetRecipientChange',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
         internalType: 'uint128',
         name: 'oldDelta',
         type: 'uint128',
@@ -162,49 +143,11 @@ export default [
     type: 'event',
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'from',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-    ],
-    name: 'TokenDeposit',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'to',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-    ],
-    name: 'TokenWithdrawal',
-    type: 'event',
-  },
-  {
     inputs: [],
-    name: 'assetRecipient',
+    name: 'assetManager',
     outputs: [
       {
-        internalType: 'address payable',
+        internalType: 'contract IAssetManager',
         name: '',
         type: 'address',
       },
@@ -233,12 +176,12 @@ export default [
   {
     inputs: [
       {
-        internalType: 'address payable',
-        name: 'newRecipient',
-        type: 'address',
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
       },
     ],
-    name: 'changeAssetRecipient',
+    name: 'changeAllowedAmount',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -342,19 +285,6 @@ export default [
         internalType: 'uint256[]',
         name: '',
         type: 'uint256[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'getAssetRecipient',
-    outputs: [
-      {
-        internalType: 'address payable',
-        name: '_assetRecipient',
-        type: 'address',
       },
     ],
     stateMutability: 'view',
@@ -466,11 +396,6 @@ export default [
         type: 'address',
       },
       {
-        internalType: 'address payable',
-        name: '_assetRecipient',
-        type: 'address',
-      },
-      {
         internalType: 'uint128',
         name: '_delta',
         type: 'uint128',
@@ -479,6 +404,11 @@ export default [
         internalType: 'uint96',
         name: '_fee',
         type: 'uint96',
+      },
+      {
+        internalType: 'uint256',
+        name: '_amount',
+        type: 'uint256',
       },
       {
         internalType: 'uint128',
@@ -567,19 +497,6 @@ export default [
       },
     ],
     stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'pairVariant',
-    outputs: [
-      {
-        internalType: 'enum IPairFactoryLike.PairVariant',
-        name: '',
-        type: 'uint8',
-      },
-    ],
-    stateMutability: 'pure',
     type: 'function',
   },
   {
@@ -673,7 +590,7 @@ export default [
       },
       {
         internalType: 'bool',
-        name: 'isRouter',
+        name: '',
         type: 'bool',
       },
       {
@@ -712,7 +629,7 @@ export default [
       },
       {
         internalType: 'bool',
-        name: 'isRouter',
+        name: '',
         type: 'bool',
       },
       {
