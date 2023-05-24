@@ -28,13 +28,7 @@ export default [
       },
       {
         indexed: false,
-        internalType: 'address',
-        name: 'assetRecipient',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'enum Pair.PoolType',
+        internalType: 'enum IPair.PoolType',
         name: 'poolType',
         type: 'uint8',
       },
