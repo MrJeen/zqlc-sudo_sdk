@@ -13,6 +13,7 @@ import { ContractEntity } from './contract.entity';
 @Entity('pools')
 @Index(['chain_id', 'pool_address'], { unique: true })
 @Index(['chain_id', 'token_address'])
+@Index(['owner_address'])
 export class PoolEntity extends BaseEntity {
   @Column('int', { default: 0, comment: '区块链id' })
   chain_id: number;
@@ -104,6 +105,14 @@ export class PoolEntity extends BaseEntity {
     comment: '池子预算',
   })
   budget: number;
+
+  @Column('decimal', {
+    precision: 56,
+    scale: 18,
+    default: 0,
+    comment: '用户资金池余额',
+  })
+  balances: number;
 
   @Column('decimal', {
     precision: 56,
