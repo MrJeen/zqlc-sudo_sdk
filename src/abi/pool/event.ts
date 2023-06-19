@@ -78,8 +78,14 @@ export default [
       {
         indexed: false,
         internalType: 'uint256',
-        name: 'price',
+        name: 'cost',
         type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint128',
+        name: 'newSpotPrice',
+        type: 'uint128',
       },
       {
         indexed: false,
