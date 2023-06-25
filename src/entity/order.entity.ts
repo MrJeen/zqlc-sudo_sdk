@@ -43,7 +43,7 @@ export class OrderEntity extends BaseEntity {
     default: 0,
     comment: '价格',
   })
-  amount: number;
+  amount: number | string;
 
   @Column('int', { default: 0, comment: '交易的nft数量' })
   nft_count: number;

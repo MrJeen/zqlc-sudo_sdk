@@ -48,7 +48,7 @@ export class SmContractEntity extends BaseEntity {
     default: 0,
     comment: '累计交易总额',
   })
-  total_swap_amount: number;
+  total_swap_amount: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -56,7 +56,7 @@ export class SmContractEntity extends BaseEntity {
     default: 0,
     comment: '当前交易额',
   })
-  swap_amount: number;
+  swap_amount: number | string;
 }
 
 export enum SWAP_CONTRACT_TYPE {

@@ -29,7 +29,7 @@ export class PoolPriceEntity extends BaseEntity {
     default: 0,
     comment: '当前价',
   })
-  price: number;
+  price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -37,7 +37,7 @@ export class PoolPriceEntity extends BaseEntity {
     default: 0,
     comment: '用户购买价（即池子售价）',
   })
-  buy_price: number;
+  buy_price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -45,5 +45,5 @@ export class PoolPriceEntity extends BaseEntity {
     default: 0,
     comment: '用户售价（即池子购买价）',
   })
-  sell_price: number;
+  sell_price: number | string;
 }

@@ -32,7 +32,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '地板价(卖池的最低价)',
   })
-  floor_price: number;
+  floor_price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -40,7 +40,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '最高报价（买池的最高价）',
   })
-  top_price: number;
+  top_price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -48,7 +48,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '报价TVL（所有买盘流动性，即价值总和）',
   })
-  quote_tvl: number;
+  quote_tvl: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -56,7 +56,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '总成交额',
   })
-  total_amount: number;
+  total_amount: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -64,7 +64,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '24小时成交额',
   })
-  daily_amount: number;
+  daily_amount: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -72,7 +72,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '7天成交额',
   })
-  weekly_amount: number;
+  weekly_amount: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -80,7 +80,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '30天成交额',
   })
-  monthly_amount: number;
+  monthly_amount: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -88,7 +88,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '24小时交易量涨跌幅',
   })
-  daily_range: number;
+  daily_range: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -96,7 +96,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '7天交易量涨跌幅',
   })
-  weekly_range: number;
+  weekly_range: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -104,7 +104,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '30天交易量涨跌幅',
   })
-  monthly_range: number;
+  monthly_range: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -112,7 +112,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '24小时地板价涨跌幅',
   })
-  daily_price_range: number;
+  daily_price_range: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -120,7 +120,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '7天地板价涨跌幅',
   })
-  weekly_price_range: number;
+  weekly_price_range: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -128,7 +128,7 @@ export class ContractEntity extends BaseEntity {
     default: 0,
     comment: '30天地板价涨跌幅',
   })
-  monthly_price_range: number;
+  monthly_price_range: number | string;
 
   @Column('int', {
     default: CONTRACT_STATUS.UPPER,

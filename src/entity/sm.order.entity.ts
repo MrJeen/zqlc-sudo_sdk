@@ -26,7 +26,7 @@ export class SmOrderEntity extends BaseEntity {
     default: 0,
     comment: '交易金额',
   })
-  amount: number;
+  amount: number | string;
 
   @Column('int', { default: 0, comment: '交易区块' })
   block_number: number;

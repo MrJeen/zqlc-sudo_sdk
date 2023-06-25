@@ -32,5 +32,5 @@ export class PoolTvlEntity extends BaseEntity {
     default: 0,
     comment: '余额',
   })
-  tvl: number;
+  tvl: number | string;
 }

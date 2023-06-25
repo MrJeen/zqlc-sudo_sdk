@@ -48,7 +48,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '调整预设增量',
   })
-  delta: number;
+  delta: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -56,7 +56,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '增量',
   })
-  curve_increment: number;
+  curve_increment: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -64,7 +64,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '手续费',
   })
-  fee: number;
+  fee: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -72,7 +72,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '初始价格（当前价格）',
   })
-  initial_price: number;
+  initial_price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -80,7 +80,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '用户购买价（卖池和双边池）',
   })
-  buy_price: number;
+  buy_price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -88,7 +88,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '用户售价（买池和双边池）',
   })
-  sell_price: number;
+  sell_price: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -96,7 +96,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '池子里eth数量',
   })
-  balance: number;
+  balance: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -104,7 +104,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '池子预算',
   })
-  budget: number;
+  budget: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -112,7 +112,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '用户资金池余额',
   })
-  balances: number;
+  balances: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -120,7 +120,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '池子的交易量',
   })
-  total_amount: number;
+  total_amount: number | string;
 
   @Column('decimal', {
     precision: 56,
@@ -128,7 +128,7 @@ export class PoolEntity extends BaseEntity {
     default: 0,
     comment: '池子最近24小时的交易量',
   })
-  daily_amount: number;
+  daily_amount: number | string;
 
   @Column('int', { default: 0, comment: 'nft数量' })
   nft_count: number;

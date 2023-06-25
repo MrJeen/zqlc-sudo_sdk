@@ -50,7 +50,7 @@ export class NftTransferLogEntity extends BaseEntity {
     default: 0,
     comment: '价格',
   })
-  price: number;
+  price: number | string;
 }
 
 export enum TRANSFER_TYPE {
