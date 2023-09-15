@@ -38,6 +38,9 @@ export class NftTransferLogEntity extends BaseEntity {
   @Column('int2', { default: 0, comment: '类型（1: 转入，2：转出，3：交易）' })
   transfer_type: number;
 
+  @Column('int2', { default: 0, comment: '类型（1: 买，2: 卖）' })
+  swap_type: number;
+
   @Column('varchar', { default: '', comment: '转出地址' })
   from_address: string;
 
