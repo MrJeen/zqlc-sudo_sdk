@@ -1,23 +1,12 @@
-import {
-  AfterLoad,
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-} from 'typeorm';
+import { AfterLoad, Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { CollectionEntity } from './collection.entity';
 import { OpenMetaBaseEntity } from '../base.entity';
-import { NftOwnerEntity } from './nft.owner.entity';
 import { transformNftImg } from '../../utils/helper.util';
 
 @Entity('nfts')
 export class NftEntity extends OpenMetaBaseEntity {
   @Column()
   chain_id: number;
-
-  @Column()
-  collection_id: number;
 
   @Column()
   contract_address: string;
@@ -37,9 +26,6 @@ export class NftEntity extends OpenMetaBaseEntity {
   @Column()
   is_mint: boolean;
 
-  @Column({ type: 'json' })
-  metadata: object;
-
   @ManyToOne(() => CollectionEntity, { createForeignKeyConstraints: false })
   @JoinColumn([
     {
@@ -52,9 +38,6 @@ export class NftEntity extends OpenMetaBaseEntity {
     },
   ])
   collection: CollectionEntity;
-
-  @OneToMany(() => NftOwnerEntity, (owner: NftOwnerEntity) => owner.nft)
-  owners: NftOwnerEntity[];
 
   @AfterLoad()
   async checkOssUrl() {

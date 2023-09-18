@@ -96,3 +96,22 @@ export async function transformNftImg(url: string) {
 
   return url;
 }
+
+/**
+ * 取表后缀
+ * @param address
+ * @param chunk
+ * @returns
+ */
+export function getTableSuffix(address: string, chunk = 200) {
+  // 取前6位和后四位数字
+  const prefix = address.slice(0, 6);
+  const suffix = address.slice(-4);
+
+  // 拼接为十六进制数值
+  const combinedHex = prefix + suffix;
+  // 转换为十进制
+  const decimalValue = parseInt(combinedHex);
+  // 取模
+  return decimalValue % chunk;
+}

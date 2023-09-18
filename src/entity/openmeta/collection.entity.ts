@@ -1,4 +1,3 @@
-import { NftOwnerEntity } from './nft.owner.entity';
 import { NftEntity } from './nft.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { OpenMetaBaseEntity } from '../base.entity';
@@ -49,12 +48,6 @@ export class CollectionEntity extends OpenMetaBaseEntity {
 
   @Column({ type: 'json' })
   rarity: object;
-
-  @OneToMany(
-    () => NftOwnerEntity,
-    (owners: NftOwnerEntity) => owners.collection,
-  )
-  owners: NftOwnerEntity[];
 
   @OneToMany(() => NftEntity, (nfts: NftEntity) => nfts.collection)
   nfts: NftEntity[];

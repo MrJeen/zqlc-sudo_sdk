@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('ranks')
+@Entity('rank_trends')
 export class RankEntity {
   @PrimaryGeneratedColumn({ comment: 'ID' })
   id: number;
@@ -12,11 +12,11 @@ export class RankEntity {
   chain_id: number;
 
   @Column()
-  collection_id: number;
+  contract_address: number;
 
   @Column()
-  owner_count: number;
+  owners: number;
 
   @Column()
-  nft_count: number;
+  items: number;
 }
