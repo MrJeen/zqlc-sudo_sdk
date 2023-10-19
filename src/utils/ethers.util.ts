@@ -1,17 +1,26 @@
 import { ethers, Wallet } from 'ethers';
 import { JsonRpcProvider } from '@ethersproject/providers/src.ts/json-rpc-provider';
 import { Interface } from '@ethersproject/abi/src.ts/interface';
-import { loadBalance } from './helper.util';
-import { selectNetwork } from '../config/constant';
+import axios from 'axios';
 
 /**
  * 获取节点
  * @param chainId
  */
-export const getNode = (chainId: number): string => {
-  const network = selectNetwork(chainId);
-  network.current_node = loadBalance(network.node);
-  return network.current_node;
+export const getNode = async (chainId: number): Promise<string> => {
+  // 调接口取
+  const response = await axios({
+    url: process.env.NODE_API_HOST + '/api/node?chain_id=' + chainId,
+    method: 'get',
+    headers: {
+      is_debug: 1,
+    },
+  });
+  const node = response?.data?.result;
+  if (!node) {
+    throw Error(`node #${chainId} not found`);
+  }
+  return node;
 };
 
 /**
@@ -19,11 +28,11 @@ export const getNode = (chainId: number): string => {
  * @param chainId
  * @param timeout 单位秒
  */
-export function getJsonRpcProvider(
+export async function getJsonRpcProvider(
   chainId: number,
   timeout = 30, // 默认30秒超时
-): JsonRpcProvider {
-  const node = getNode(chainId);
+): Promise<JsonRpcProvider> {
+  const node = await getNode(chainId);
   let provider = undefined;
   if (timeout === -1) {
     provider = new ethers.providers.JsonRpcProvider(node);

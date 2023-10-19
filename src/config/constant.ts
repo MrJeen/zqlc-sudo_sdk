@@ -81,6 +81,28 @@ export const SEPOLIA_NETWORK: NETWORK_TYPE = {
   asset_manager_address: process.env.SEPOLIA_ASSET_MANAGER_ADDRESS ?? '',
 };
 
+export const BASE_NETWORK: NETWORK_TYPE = {
+  name: 'BASE',
+  chainId: 8453,
+  coin_chainId: 1,
+  coin_address: process.env.BASE_COIN_ADDRESS ?? '',
+  transferIncr: 5,
+  curve_linear_address: process.env.BASE_CURVE_LINEAR_ADDRESS ?? '',
+  curve_exponential_address: process.env.BASE_CURVE_EXPONENTIAL_ADDRESS ?? '',
+  platform_fee: eval(process.env.BASE_PLATFORM_FEE),
+  swap_address: process.env.BASE_SWAP_MINING_ADDRESS ?? '',
+  swap_coin: process.env.BASE_SWAP_COIN_ADDRESS ?? '',
+  per_block_time: 2, // 单位:s
+  asset_manager_address: process.env.BASE_ASSET_MANAGER_ADDRESS ?? '',
+};
+
+const networkMap = {
+  [GOERLI_NETWORK.chainId]: GOERLI_NETWORK,
+  [BSC_NETWORK.chainId]: BSC_NETWORK,
+  [SEPOLIA_NETWORK.chainId]: SEPOLIA_NETWORK,
+  [BASE_NETWORK.chainId]: BASE_NETWORK,
+};
+
 export const NETWORKS: NETWORK_TYPE[] = [];
 
 export const CHAINS = {};
@@ -88,25 +110,13 @@ export const CHAINS = {};
 function initNetworks(chainIds: number[]) {
   if (chainIds.length) {
     for (const chainId of chainIds) {
-      switch (chainId) {
-        case BSC_NETWORK.chainId:
-          NETWORKS.push(BSC_NETWORK);
-          CHAINS[chainId] = BSC_NETWORK.name;
-          CHAINS[BSC_NETWORK.name] = chainId;
-          break;
-        case GOERLI_NETWORK.chainId:
-          NETWORKS.push(GOERLI_NETWORK);
-          CHAINS[chainId] = GOERLI_NETWORK.name;
-          CHAINS[GOERLI_NETWORK.name] = chainId;
-          break;
-        case SEPOLIA_NETWORK.chainId:
-          NETWORKS.push(SEPOLIA_NETWORK);
-          CHAINS[chainId] = SEPOLIA_NETWORK.name;
-          CHAINS[SEPOLIA_NETWORK.name] = chainId;
-          break;
-        default:
-          break;
+      const network = networkMap[chainId];
+      if (!network) {
+        continue;
       }
+      NETWORKS.push(network);
+      CHAINS[chainId] = network.name;
+      CHAINS[network.name] = chainId;
     }
   }
 }
@@ -123,13 +133,9 @@ initNetworks(supportChains);
  * @returns
  */
 export function selectNetwork(chainId: number): NETWORK_TYPE {
-  const network = NETWORKS.find((network) => network.chainId == chainId);
+  const network = networkMap[chainId];
   if (!network) {
     throw Error(`network #${chainId} not found`);
-  }
-  if (!network.node || !network.node.length) {
-    // 节点初始化
-    network.node = JSON.parse(process.env[network.name + '_NODE'] ?? '[]');
   }
   return network;
 }
